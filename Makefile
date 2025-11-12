@@ -1,27 +1,33 @@
 NAME = cub3D
 
-SRC = main.c 
+FLAGS = -Wall -Wextra -Werror
 
-OUT = $(SRC:.c=.o)
+MINILIBX_PATH = ./mlx
+
+MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra
+SRC = main.c \
 
-READLINE = -lreadline -lncurses
-
-%.c%.o:
-		${CC} ${FLAGS} -g -c $< -o ${<:.c=.o}
-
-$(NAME) : $(OUT)
-		$(CC) $(FLAGS) $(OUT) -o $(NAME) $(READLINE)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
+$(NAME): $(OBJ) $(MINILIBX)
+		$(CC) $(OBJ) $(FLAGS) $(MINILIBX) -L./mlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+
 clean:
-		rm -f $(OUT)
+		rm -f $(OBJ)
+		$(MAKE) -C $(MINILIBX_PATH) clean
 
 fclean: clean
-	rm -f $(NAME)
+		rm -f $(NAME)
 
 re: fclean all
+
+%.o: %.c
+		$(CC) $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+
+$(MINILIBX):
+		$(MAKE) -C $(MINILIBX_PATH)
