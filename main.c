@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/01 13:43:22 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/03 13:59:42 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,93 +14,84 @@
 
 int	main(void)
 {
-	double	posx = 0;
-	double	posy = 0;
+	struct s_raycast	t_ray;
 
-	double	dirx = -1;
-	double	diry = 0;
-	double	planex = 0;
-	double	planey = 0.66;
-
+	t_ray->pos_x = 0;
+	t_ray->pos_y = 0;
+	t_ray->dir_x = -1;
+	t_ray->dir_y = 0;
+	t_ray->plane_x = 0;
+	t_ray->plane_y = 0->66;
 	while (1)
 	{
-		int	x = 0;
+		int	x;
 
+		x = 0;
 		while (x < /*map width*/)
 		{
-			double	cameraX = 2 * x / /*map width needs to be double here*/ - 1;
-			double	raydirx = dirx + planex * camerax;
-			double	raydiry = diry + planey * camerax;
-
-			int	mapx = /*posx casted to int*/
-			int	mapy = /*posy casted to int*/
-
-			double	sidedistx;
-			double	sidedisty;
-
-			double	deltadistx = fabs(1 / raydirx);
-			double	deltadisty = fabs(1 / raydiry);
-
-			double	perpwalldist;
-
-			int	stepx;
-			int	stepy;
-
-			int	hit = 0;
-			int	side;
-
-			if (raydirx < 0)
+			t_ray->camera_x = 2 * x / /*map width needs to be double here*/ - 1;
+			t_ray->raydir_x = t_ray->dir_x + t_ray->plane_x * t_ray->camera_x;
+			t_ray->raydir_y = t_ray->dir_y + t_ray->plane_y * t_ray->camera_x;
+			/*---------------------------------------------------*/
+			t_ray->map_x = (int) t_ray->pos_x;
+			t_ray->map_y = (int) t_ray->pos_y;
+			/*---------------------------------------------------*/
+			t_ray->deltadist_x = fabs(1 / t_ray->raydir_x);
+			t_ray->deltadist_y = fabs(1 / t_ray->raydir_y);
+			t_ray->hit = 0;
+			/*---------------------------------------------------*/
+			if (t_ray->raydir_x < 0)
 			{
-				stepx = -1;
-				sidedistx = (posx - mapx) * deltadistx;
+				t_ray->step_x = -1;
+				t_ray->sidedist_x = (t_ray->pos_x - t_ray->map_x) * t_ray->deltadist_x;
 			}
 			else
 			{
-				stepx = 1;
-				sidedistx = (mapx + 1.0 - posx) * deltadistx;
+				t_ray->step_x = 1;
+				t_ray->sidedist_x = (t_ray->map_x + 1->0 - t_ray->pos_x) * t_ray->deltadist_x;
 			}
-			if (raydiry < 0)
+			/*---------------------------------------------------*/
+			if (t_ray->raydir_y < 0)
 			{
-				stepy = -1;
-				sidedisty = (posy - mapy) * deltadisty;
+				t_ray->step_y = -1;
+				t_ray->sidedist_y = (t_ray->pos_y - t_ray->map_y) * t_ray->deltadist_y;
 			}
 			else
 			{
-				stepy = 1;
-				sidedisty = (mapy + 1.0 - posy) * deltadisty;
+				t_ray->step_y = 1;
+				t_ray->sidedist_y = (t_ray->map_y + 1->0 - t_ray->pos_y) * t_ray->deltadist_y;
 			}
-
-			while (hit == 0)
+			/*---------------------------------------------------*/
+			while (t_ray->hit == 0)
 			{
-				if (sidedistx < sidedisty)
+				if (t_ray->sidedist_x < t_ray->sidedist_y)
 				{
-					sidedistx += deltadistx;
-					mapx += stepx;
-					side = 0;
+					t_ray->sidedist_x += t_ray->deltadist_x;
+					t_ray->map_x += t_ray->step_x;
+					t_ray->side = 0;
 				}
 				else
 				{
-					sidedisty += deltadisty;
-					mapy += stepy;
-					side = 1;
+					t_ray->sidedist_y += t_ray->deltadist_y;
+					t_ray->map_y += t_ray->step_y;
+					t_ray->side = 1;
 				}
 				if (/*check if ray hit a wall*/)
-					hit = 1;
+					t_ray->hit = 1;
 			}
-
-			if (side == 0)
-				perpwalldist = (sidedistx - deltadistx);
+			/*---------------------------------------------------*/
+			if (t_ray->side == 0)
+				t_ray->perpwalldist = (t_ray->sidedist_x - t_ray->deltadist_x);
 			else
-				perpwalldist = (sidedisty - deltadisty);
-
-			int	lineheight = (int)(/*map height*/ / perpwalldist);
-
-			int	drawstart = -lineheight / 2 + /*map height*/ / 2;
-			if (drawstart < 0)
-				drawstart = 0;
-			int	drawend = lineheight / 2 + /*map height*/ / 2;
-			if (drawend >= /*map height*/)
-				drawend = /*map height*/ - 1;
+				t_ray->perpwalldist = (t_ray->sidedist_y - t_ray->deltadist_y);
+			/*---------------------------------------------------*/
+			t_ray->line_height = (int)(/*map height*/ / t_ray->perpwalldist);
+			t_ray->draw_start = -t_ray->line_height / 2 + /*map height*/ / 2;
+			if (t_ray->draw_start < 0)
+				t_ray->draw_start = 0;
+			t_ray->draw_end = t_ray->line_height / 2 + /*map height*/ / 2;
+			if (t_ray->draw_end >= /*map height*/)
+				t_ray->draw_end = /*map height*/ - 1;
 			x++;
 		}
 	}
