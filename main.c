@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/03 13:59:42 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/03 14:06:42 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	t_ray->dir_x = -1;
 	t_ray->dir_y = 0;
 	t_ray->plane_x = 0;
-	t_ray->plane_y = 0->66;
+	t_ray->plane_y = 0.66;
 	while (1)
 	{
 		int	x;
