@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/03 14:06:42 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/03 14:08:08 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(void)
 			else
 			{
 				t_ray->step_x = 1;
-				t_ray->sidedist_x = (t_ray->map_x + 1->0 - t_ray->pos_x) * t_ray->deltadist_x;
+				t_ray->sidedist_x = (t_ray->map_x + 1.0 - t_ray->pos_x) * t_ray->deltadist_x;
 			}
 			/*---------------------------------------------------*/
 			if (t_ray->raydir_y < 0)
@@ -59,7 +59,7 @@ int	main(void)
 			else
 			{
 				t_ray->step_y = 1;
-				t_ray->sidedist_y = (t_ray->map_y + 1->0 - t_ray->pos_y) * t_ray->deltadist_y;
+				t_ray->sidedist_y = (t_ray->map_y + 1.0 - t_ray->pos_y) * t_ray->deltadist_y;
 			}
 			/*---------------------------------------------------*/
 			while (t_ray->hit == 0)
