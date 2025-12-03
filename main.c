@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/03 14:08:08 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/03 14:13:55 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	main(void)
 {
-	struct s_raycast	t_ray;
+	t_raycast	ray;
 
-	t_ray->pos_x = 0;
-	t_ray->pos_y = 0;
-	t_ray->dir_x = -1;
-	t_ray->dir_y = 0;
-	t_ray->plane_x = 0;
-	t_ray->plane_y = 0.66;
+	ray->pos_x = 0;
+	ray->pos_y = 0;
+	ray->dir_x = -1;
+	ray->dir_y = 0;
+	ray->plane_x = 0;
+	ray->plane_y = 0.66;
 	while (1)
 	{
 		int	x;
@@ -29,69 +29,69 @@ int	main(void)
 		x = 0;
 		while (x < /*map width*/)
 		{
-			t_ray->camera_x = 2 * x / /*map width needs to be double here*/ - 1;
-			t_ray->raydir_x = t_ray->dir_x + t_ray->plane_x * t_ray->camera_x;
-			t_ray->raydir_y = t_ray->dir_y + t_ray->plane_y * t_ray->camera_x;
+			ray->camera_x = 2 * x / /*map width needs to be double here*/ - 1;
+			ray->raydir_x = ray->dir_x + ray->plane_x * ray->camera_x;
+			ray->raydir_y = ray->dir_y + ray->plane_y * ray->camera_x;
 			/*---------------------------------------------------*/
-			t_ray->map_x = (int) t_ray->pos_x;
-			t_ray->map_y = (int) t_ray->pos_y;
+			ray->map_x = (int) ray->pos_x;
+			ray->map_y = (int) ray->pos_y;
 			/*---------------------------------------------------*/
-			t_ray->deltadist_x = fabs(1 / t_ray->raydir_x);
-			t_ray->deltadist_y = fabs(1 / t_ray->raydir_y);
-			t_ray->hit = 0;
+			ray->deltadist_x = fabs(1 / ray->raydir_x);
+			ray->deltadist_y = fabs(1 / ray->raydir_y);
+			ray->hit = 0;
 			/*---------------------------------------------------*/
-			if (t_ray->raydir_x < 0)
+			if (ray->raydir_x < 0)
 			{
-				t_ray->step_x = -1;
-				t_ray->sidedist_x = (t_ray->pos_x - t_ray->map_x) * t_ray->deltadist_x;
+				ray->step_x = -1;
+				ray->sidedist_x = (ray->pos_x - ray->map_x) * ray->deltadist_x;
 			}
 			else
 			{
-				t_ray->step_x = 1;
-				t_ray->sidedist_x = (t_ray->map_x + 1.0 - t_ray->pos_x) * t_ray->deltadist_x;
+				ray->step_x = 1;
+				ray->sidedist_x = (ray->map_x + 1.0 - ray->pos_x) * ray->deltadist_x;
 			}
 			/*---------------------------------------------------*/
-			if (t_ray->raydir_y < 0)
+			if (ray->raydir_y < 0)
 			{
-				t_ray->step_y = -1;
-				t_ray->sidedist_y = (t_ray->pos_y - t_ray->map_y) * t_ray->deltadist_y;
+				ray->step_y = -1;
+				ray->sidedist_y = (ray->pos_y - ray->map_y) * ray->deltadist_y;
 			}
 			else
 			{
-				t_ray->step_y = 1;
-				t_ray->sidedist_y = (t_ray->map_y + 1.0 - t_ray->pos_y) * t_ray->deltadist_y;
+				ray->step_y = 1;
+				ray->sidedist_y = (ray->map_y + 1.0 - ray->pos_y) * ray->deltadist_y;
 			}
 			/*---------------------------------------------------*/
-			while (t_ray->hit == 0)
+			while (ray->hit == 0)
 			{
-				if (t_ray->sidedist_x < t_ray->sidedist_y)
+				if (ray->sidedist_x < ray->sidedist_y)
 				{
-					t_ray->sidedist_x += t_ray->deltadist_x;
-					t_ray->map_x += t_ray->step_x;
-					t_ray->side = 0;
+					ray->sidedist_x += ray->deltadist_x;
+					ray->map_x += ray->step_x;
+					ray->side = 0;
 				}
 				else
 				{
-					t_ray->sidedist_y += t_ray->deltadist_y;
-					t_ray->map_y += t_ray->step_y;
-					t_ray->side = 1;
+					ray->sidedist_y += ray->deltadist_y;
+					ray->map_y += ray->step_y;
+					ray->side = 1;
 				}
 				if (/*check if ray hit a wall*/)
-					t_ray->hit = 1;
+					ray->hit = 1;
 			}
 			/*---------------------------------------------------*/
-			if (t_ray->side == 0)
-				t_ray->perpwalldist = (t_ray->sidedist_x - t_ray->deltadist_x);
+			if (ray->side == 0)
+				ray->perpwalldist = (ray->sidedist_x - ray->deltadist_x);
 			else
-				t_ray->perpwalldist = (t_ray->sidedist_y - t_ray->deltadist_y);
+				ray->perpwalldist = (ray->sidedist_y - ray->deltadist_y);
 			/*---------------------------------------------------*/
-			t_ray->line_height = (int)(/*map height*/ / t_ray->perpwalldist);
-			t_ray->draw_start = -t_ray->line_height / 2 + /*map height*/ / 2;
-			if (t_ray->draw_start < 0)
-				t_ray->draw_start = 0;
-			t_ray->draw_end = t_ray->line_height / 2 + /*map height*/ / 2;
-			if (t_ray->draw_end >= /*map height*/)
-				t_ray->draw_end = /*map height*/ - 1;
+			ray->line_height = (int)(/*map height*/ / ray->perpwalldist);
+			ray->draw_start = -ray->line_height / 2 + /*map height*/ / 2;
+			if (ray->draw_start < 0)
+				ray->draw_start = 0;
+			ray->draw_end = ray->line_height / 2 + /*map height*/ / 2;
+			if (ray->draw_end >= /*map height*/)
+				ray->draw_end = /*map height*/ - 1;
 			x++;
 		}
 	}
