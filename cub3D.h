@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/03 13:56:23 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/04 12:52:06 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <math.h>
 # include "mlx/mlx.h"
 
-struct	s_raycast
+typedef struct s_raycast
 {
 	double	pos_x;
 	double	pos_y;
@@ -40,13 +40,18 @@ struct	s_raycast
 	double	perpwalldist;
 	int		step_x;
 	int		step_y;
-	int		hit;
 	double	sidedist_x;
 	double	sidedist_y;
 	int		side;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-} t_raycast;
+}	t_ray;
+
+void	ray_set(t_ray *ray);
+void	init_ray_info(int x, t_ray *ray);
+void	start_dda(t_ray *ray);
+void	perform_dda(t_ray *ray);
+void	line_calc(t_ray *ray);
 
 #endif
