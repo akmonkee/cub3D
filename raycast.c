@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:27:58 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/05 14:06:30 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/11 12:11:28 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ray_set(t_ray *ray)
 	ray->deltadist_x = 0;
 	ray->deltadist_y = 0;
 	ray->perpwalldist = 0;
+	ray->wall_x = 0;
 	ray->side = 0;
 	ray->line_height = 0;
 	ray->draw_start = 0;
@@ -70,7 +71,7 @@ void	start_dda(t_ray *ray, t_player *player)
 	}
 }
 
-void	perform_dda(t_ray *ray)
+void	perform_dda(t_data *data, t_ray *ray)
 {
 	int	hit;
 
@@ -89,8 +90,9 @@ void	perform_dda(t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		/*need to add a check to see if the ray hit the map border and break the while*/
-		if (/*need to add a map check to see if the ray hit a wall*/)
+		if (ray->map_y < 0.25 || ray->map_x < 0.25)
+			break ;
+		if (data->map[ray->map_y][ray->map_x] > '0')
 			hit = 1;
 	}
 }
@@ -108,6 +110,10 @@ void	line_calc(t_data *data, t_ray *ray, t_player *player)
 	ray->draw_end = ray->line_height / 2 + data->win_height / 2;
 	if (ray->draw_end >= data->win_height)
 		ray->draw_end = data->win_height - 1;
+	if (ray->side == 0)
+		ray->wall_x = player->pos_y + ray->perpwalldist * ray->dir_y;
+	else
+		ray->wall_x = player->pos_x + ray->perpwalldist * ray->dir_x;
 }
 
 void	raycasting(t_player *player, t_data *data)
@@ -116,18 +122,12 @@ void	raycasting(t_player *player, t_data *data)
 	int		x;
 
 	x = 0;
-	data->ray = ray;
-	ray->pos_x = 0;
-	ray->pos_y = 0;
-	ray->dir_x = -1;
-	ray->dir_y = 0;
-	ray->plane_x = 0;
-	ray->plane_y = 0.66;
+	ray = data->ray;
 	while (x < data->win_width)
 	{
 		init_ray_info(x, &ray, player);
 		start_dda(&ray, player);
-		perform_dda(&ray);
+		perform_dda(data, &ray);
 		line_calc(data, &ray, player);
 		x++;
 	}
