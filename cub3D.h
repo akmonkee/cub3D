@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/11 12:19:50 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/11 14:42:33 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void	perform_dda(t_data *data, t_ray *ray);
 void	line_calc(t_data *data, t_ray *ray, t_player *player);
 void	raycasting(t_player *player, t_data *data);
 /*main.c*/
+void	mlx_setup(t_data *data);
 
 #endif
