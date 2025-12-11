@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/11 12:09:34 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/11 12:19:50 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,16 @@ typedef struct s_data
 	char		**map;
 }	t_data;
 
-/*raycast.c*/
+/*datasetup.c*/
 void	ray_set(t_ray *ray);
+void	player_setup(t_player *player);
+void	data_setup(t_data *data);
+/*raycast.c*/
 void	init_ray_info(int x, t_ray *ray, t_player *player);
 void	start_dda(t_ray *ray, t_player *player);
 void	perform_dda(t_data *data, t_ray *ray);
 void	line_calc(t_data *data, t_ray *ray, t_player *player);
 void	raycasting(t_player *player, t_data *data);
 /*main.c*/
-void	player_setup(t_player *player);
-void	data_setup(t_data *data);
 
 #endif

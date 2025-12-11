@@ -8,7 +8,7 @@ MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
 CC = gcc
 
-SRC = main.c raycast.c\
+SRC = main.c raycast.c datasetup.c\
 
 OBJ = $(SRC:.c=.o)
 

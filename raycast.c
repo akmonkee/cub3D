@@ -6,34 +6,11 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:27:58 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/11 12:11:28 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/11 12:15:41 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void	ray_set(t_ray *ray)
-{
-	ray->camera_x = 0;
-	ray->dir_x = 0;
-	ray->dir_y = 0;
-	ray->map_x = 0;
-	ray->map_y = 0;
-	ray->step_x = 0;
-	ray->step_y = 0;
-	ray->sidedist_x = 0;
-	ray->sidedist_y = 0;
-	ray->deltadist_x = 0;
-	ray->deltadist_y = 0;
-	ray->perpwalldist = 0;
-	ray->wall_x = 0;
-	ray->side = 0;
-	ray->line_height = 0;
-	ray->draw_start = 0;
-	ray->draw_end = 0;
-	ray->raydir_x = 0;
-	ray->raydir_y = 0;
-}
 
 void	init_ray_info(int x, t_ray *ray, t_player *player)
 {
