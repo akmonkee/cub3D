@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/15 12:23:23 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/15 14:39:44 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@
 # include <string.h>
 # include <sys/time.h>
 # include <math.h>
+# include <X11/X.h>
 # include "mlx/mlx.h"
 
 # define WIN_HEIGHT 480
 # define WIN_WIDTH 640
+# define ESC 65307
 
 typedef struct s_texture
 {
@@ -96,6 +98,7 @@ void	line_calc(t_data *data, t_ray *ray, t_player *player);
 void	raycasting(t_player *player, t_data *data);
 /*main.c*/
 void	mlx_setup(t_data *data);
+int		on_keypress(int keysym, t_data *data);
 void	texture_setup(t_texture *texture);
 
 #endif

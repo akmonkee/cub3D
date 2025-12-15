@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/15 12:24:59 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/15 14:39:12 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ void	texture_setup(t_texture *texture)
 	texture->y = 0;
 }
 
+int	on_keypress(int keysym, t_data *data)
+{
+	if (keysym == ESC)
+	{
+		//on_key_press_exit(data);
+		exit(0);
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data		data;
@@ -47,5 +57,7 @@ int	main(int argc, char **argv)
 	mlx_setup(&data);
 	ray_set(&data.ray);
 	raycasting(&data.player, &data);
+	mlx_hook(data.win, KeyPress, KeyPressMask, on_keypress, &data);
+	mlx_loop(data.mlx);
 	return (0);
 }
