@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/11 12:16:03 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/15 12:23:32 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	data_setup(t_data *data)
 	data->win_height = WIN_HEIGHT;
 	data->win_width = WIN_WIDTH;
 	player_setup(&data->player);
+	texture_setup(&data->texture);
 	data->map = NULL;
 }

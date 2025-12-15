@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/11 14:54:21 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/15 12:24:59 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,25 @@ void	mlx_setup(t_data *data)
 	return ;
 }
 
-int	main(void)
+void	texture_setup(t_texture *texture)
+{
+	texture->north = NULL;
+	texture->south = NULL;
+	texture->west = NULL;
+	texture->east = NULL;
+	texture->size = 64;
+	texture->step = 0.0;
+	texture->pos = 0.0;
+	texture->x = 0;
+	texture->y = 0;
+}
+
+int	main(int argc, char **argv)
 {
 	t_data		data;
 
+	if (argc != 2)
+		exit(1);
 	data_setup(&data);
 	mlx_setup(&data);
 	ray_set(&data.ray);
