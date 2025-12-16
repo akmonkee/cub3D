@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/15 14:39:12 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/16 13:52:03 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ void	texture_setup(t_texture *texture)
 	texture->pos = 0.0;
 	texture->x = 0;
 	texture->y = 0;
-}
-
-int	on_keypress(int keysym, t_data *data)
-{
-	if (keysym == ESC)
-	{
-		//on_key_press_exit(data);
-		exit(0);
-	}
-	return (0);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/15 14:39:44 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/16 13:52:15 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_data
 	t_texture	texture;
 	t_ray		ray;
 	char		**map;
+	int			**m_texture;
 }	t_data;
 
 /*datasetup.c*/
@@ -96,9 +97,11 @@ void	start_dda(t_ray *ray, t_player *player);
 void	perform_dda(t_data *data, t_ray *ray);
 void	line_calc(t_data *data, t_ray *ray, t_player *player);
 void	raycasting(t_player *player, t_data *data);
+/*hook.c*/
+void	on_key_press_exit(t_data *data);
+int		on_keypress(int keysym, t_data *data);
 /*main.c*/
 void	mlx_setup(t_data *data);
-int		on_keypress(int keysym, t_data *data);
 void	texture_setup(t_texture *texture);
 
 #endif
