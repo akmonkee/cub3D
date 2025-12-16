@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/16 13:52:15 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/16 14:03:13 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/time.h>
 # include <math.h>
 # include <X11/X.h>
+# include "libft/libft.h"
 # include "mlx/mlx.h"
 
 # define WIN_HEIGHT 480
@@ -102,6 +103,8 @@ void	on_key_press_exit(t_data *data);
 int		on_keypress(int keysym, t_data *data);
 /*main.c*/
 void	mlx_setup(t_data *data);
+void	texture_setup(t_texture *texture);
+void	m_texture_setup(t_data *data);
 void	texture_setup(t_texture *texture);
 
 #endif
