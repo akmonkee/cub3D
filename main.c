@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 13:38:46 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/17 14:32:42 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,6 @@ void	mlx_setup(t_data *data)
 	if (!data->win)
 		exit(1);
 	return ;
-}
-
-void	texture_setup(t_texture *texture)
-{
-	texture->north = NULL;
-	texture->south = NULL;
-	texture->west = NULL;
-	texture->east = NULL;
-	texture->size = 64;
-	texture->step = 0.0;
-	texture->pos = 0.0;
-	texture->x = 0;
-	texture->y = 0;
 }
 
 void	parse_data(t_data *data, char *path)

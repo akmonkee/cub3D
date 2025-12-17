@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 14:22:35 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 14:23:00 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/17 14:36:38 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ int	count_lines(char *file)
 	}
 	close(fd);
 	return (lines);
+}
+
+int	count_lines_arr(char **arr)
+{
+	int	i;
+
+	if (!arr)
+		return (0);
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
 }
 
 void	free_char_array(char **arr)
