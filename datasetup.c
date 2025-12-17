@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 13:39:37 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/17 14:22:09 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ void	data_setup(t_data *data)
 	player_setup(&data->player);
 	texture_setup(&data->texture);
 	data->map = NULL;
+	data->textures = NULL;
 }

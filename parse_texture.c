@@ -6,13 +6,9 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:56:54 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 14:04:24 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/17 14:24:06 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	parse_textures(t_map *map_info, void *mlx)
-{
-	
-}

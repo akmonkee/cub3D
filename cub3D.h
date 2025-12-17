@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 14:04:31 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/17 14:24:14 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct s_raycast
 typedef struct s_map
 {
 	char		**content;
-	int			**textures;
 	int			width;
 	int			height;
 	int			lst_itr;
@@ -99,6 +98,7 @@ typedef struct s_data
 	t_texture	texture;
 	t_ray		ray;
 	char		**map;
+	int			**textures;
 	t_map		map_info;
 }	t_data;
 
@@ -118,12 +118,12 @@ int		on_keypress(int keysym, t_data *data);
 /*parse_map.c*/
 int		check_file_type(char *file, char *type);
 void	map_setup(t_map *map_info);
-int		count_lines(char *file);
-void	free_char_array(char **arr);
-void	map_pop(t_map *map_info, char *path, void *mlx);
+void	map_pop(t_map *map_info, char *path);
 void	parse_map(t_data *data, char *path);
 /*parse_texture.c*/
-void	parse_textures(t_map *map_info, void *mlx);
+/*utils.c*/
+int		count_lines(char *file);
+void	free_char_array(char **arr);
 /*main.c*/
 void	mlx_setup(t_data *data);
 void	texture_setup(t_texture *texture);
