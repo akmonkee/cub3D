@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 13:24:48 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/17 13:38:46 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,6 @@ void	texture_setup(t_texture *texture)
 	texture->pos = 0.0;
 	texture->x = 0;
 	texture->y = 0;
-}
-
-/*need to add a function to convert xmp files into img for mlx*/
-void	m_texture_setup(t_data *data)
-{
-	data->m_texture = ft_calloc(5, sizeof * data->m_texture);
-	if (!data->m_texture)
-		exit(1);
-	data->m_texture[0] = NULL;
-	data->m_texture[1] = NULL;
-	data->m_texture[2] = NULL;
-	data->m_texture[3] = NULL;
 }
 
 void	parse_data(t_data *data, char *path)

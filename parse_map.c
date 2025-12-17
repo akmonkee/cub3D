@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 13:24:51 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/17 14:05:21 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,67 @@ int	check_file_type(char *file, char *type)
 void	map_setup(t_map *map_info)
 {
 	map_info->content = NULL;
+	map_info->textures = NULL;
 	map_info->ceiling_color = -1;
 	map_info->floor_color = -1;
 	map_info->height = 0;
 	map_info->width = 0;
 	map_info->content_order = 0;
+}
+
+int	count_lines(char *file)
+{
+	int		fd;
+	int		lines;
+	char	*line;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		perror("cub3D");
+		exit(0);
+	}
+	lines = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		lines++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (lines);
+}
+
+void	free_char_array(char **arr)
+{
+	int	i;
+
+	if (arr == NULL)
+		return ;
+	i = 0;
+	while (arr[i] != NULL)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
+void	map_pop(t_map *map_info, char *path, void *mlx)
+{
+	int	lines;
+
+	lines = count_lines(path);
+	map_info->content = ft_calloc(sizeof(char *), (lines + 1));
+	map_info->content[lines] = NULL;
+	if (!map_info->content)
+	{
+		free_char_array(map_info->content);
+		map_info->content = NULL;
+		return ;
+	}
+	parse_textures(map_info, mlx);
 }
 
 void	parse_map(t_data *data, char *path)
@@ -59,4 +115,5 @@ void	parse_map(t_data *data, char *path)
 		return ;
 	}
 	map_setup(&data->map_info);
+	map_pop(&data->map_info, path, data->mlx);
 }
