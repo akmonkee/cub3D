@@ -18,11 +18,12 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(MINILIBX)
-		$(CC) $(OBJ) $(FLAGS) $(MINILIBX) -L./mlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
-
-$(NAME): $(OBJ) $(LIBFT)
-		$(CC) $(OBJ) $(FLAGS) -L$(LIBFT_PATH) -lft -o $(NAME)
+$(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
+		$(CC) $(OBJ) $(FLAGS) \
+		$(LIBFT) \
+		$(MINILIBX_PATH)/libmlx_Linux.a \
+		-L/usr/lib -lXext -lX11 -lm -lz \
+		-o $(NAME)
 
 clean:
 		rm -f $(OBJ)
