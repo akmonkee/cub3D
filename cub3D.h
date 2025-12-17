@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/16 14:03:13 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/17 13:25:29 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
+# include <sys/stat.h>
 # include <math.h>
 # include <X11/X.h>
 # include "libft/libft.h"
@@ -75,6 +76,18 @@ typedef struct s_raycast
 	double	raydir_y;
 }	t_ray;
 
+typedef struct s_map
+{
+	char		**content;
+	int			width;
+	int			height;
+	int			lst_itr;
+	int			playr_count;
+	int			floor_color;
+	int			ceiling_color;
+	int			content_order;
+}				t_map;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -86,6 +99,7 @@ typedef struct s_data
 	t_ray		ray;
 	char		**map;
 	int			**m_texture;
+	t_map		map_info;
 }	t_data;
 
 /*datasetup.c*/
@@ -101,10 +115,15 @@ void	raycasting(t_player *player, t_data *data);
 /*hook.c*/
 void	on_key_press_exit(t_data *data);
 int		on_keypress(int keysym, t_data *data);
+/*parse_map.c*/
+int		check_file_type(char *file, char *type);
+void	map_setup(t_map *map_info);
+void	parse_map(t_data *data, char *path);
 /*main.c*/
 void	mlx_setup(t_data *data);
 void	texture_setup(t_texture *texture);
 void	m_texture_setup(t_data *data);
 void	texture_setup(t_texture *texture);
+void	parse_data(t_data *data, char *path);
 
 #endif
