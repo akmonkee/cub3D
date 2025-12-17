@@ -19,14 +19,19 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(MINILIBX)
-		$(CC) $(OBJ) $(FLAGS) $(LIBFT) $(MINILIBX) -L./mlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+		$(CC) $(OBJ) $(FLAGS) $(MINILIBX) -L./mlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+
+$(NAME): $(OBJ) $(LIBFT)
+		$(CC) $(OBJ) $(FLAGS) -L$(LIBFT_PATH) -lft -o $(NAME)
 
 clean:
 		rm -f $(OBJ)
-		$(MAKE) -C $(LIBFT) $(MINILIBX_PATH) clean
+		$(MAKE) -C $(MINILIBX_PATH) clean
+		$(MAKE) -C $(LIBFT_PATH) clean
 
 fclean: clean
 		rm -f $(NAME)
+		$(MAKE) -C $(LIBFT_PATH) fclean
 
 re: fclean all
 
