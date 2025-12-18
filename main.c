@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 14:32:42 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/18 14:24:13 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	parse_data(t_data *data, char *path)
 	data_setup(data);
 	mlx_setup(data);
 	parse_map(data, path);
-	data->win_height = WIN_HEIGHT;
+	parse_textures(data);
 }
 
 int	main(int argc, char **argv)
@@ -38,11 +38,10 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		exit(1);
-	free(argv);
 	parse_data(&data, argv[1]);
-	ray_set(&data.ray);
-	raycasting(&data.player, &data);
-	mlx_hook(data.win, KeyPress, KeyPressMask, on_keypress, &data);
-	mlx_loop(data.mlx);
+	//ray_set(&data.ray);
+	//raycasting(&data.player, &data);
+	//mlx_hook(data.win, KeyPress, KeyPressMask, on_keypress, &data);
+	//mlx_loop(data.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:56:54 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/18 14:03:21 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/18 14:04:10 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	texture_setup(t_texture *texture)
 	texture->y = 0;
 }
 
-void	assign_paths(char **content, int i, t_texture *textures)
+void	assign_paths(char **content, int i, t_texture *texture)
 {
 	char	**split_result;
 
@@ -35,13 +35,13 @@ void	assign_paths(char **content, int i, t_texture *textures)
 	if (!split_result[1])
 		return ;
 	if (ft_strcmp(split_result[0], "NO") == 0)
-		textures->north = ft_strdup(split_result[1]);
+		texture->north = ft_strdup(split_result[1]);
 	else if (ft_strcmp(split_result[0], "SO") == 0)
-		textures->south = ft_strdup(split_result[1]);
+		texture->south = ft_strdup(split_result[1]);
 	else if (ft_strcmp(split_result[0], "WE") == 0)
-		textures->west = ft_strdup(split_result[1]);
+		texture->west = ft_strdup(split_result[1]);
 	else if (ft_strcmp(split_result[0], "EA") == 0)
-		textures->east = ft_strdup(split_result[1]);
+		texture->east = ft_strdup(split_result[1]);
 	if (!check_file_type(split_result[1], ".xpm"))
 		return (free_char_array(split_result));
 	free_char_array(split_result);
