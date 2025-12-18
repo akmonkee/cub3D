@@ -6,11 +6,20 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 14:22:09 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/18 12:21:57 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	clear_img_setup(t_img *img)
+{
+	img->img = NULL;
+	img->addr = NULL;
+	img->pixel_bits = 0;
+	img->size_line = 0;
+	img->endian = 0;
+}
 
 void	ray_set(t_ray *ray)
 {
@@ -53,6 +62,7 @@ void	data_setup(t_data *data)
 	data->win_width = WIN_WIDTH;
 	player_setup(&data->player);
 	texture_setup(&data->texture);
-	data->map = NULL;
+	data->texture_pixels = NULL;
 	data->textures = NULL;
+	data->map = NULL;
 }

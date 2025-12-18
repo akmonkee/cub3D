@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:56:54 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 14:37:19 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/18 14:03:21 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,43 @@ void	texture_setup(t_texture *texture)
 	texture->y = 0;
 }
 
-void	parse_textures(t_data *data, void *mlx)
+void	assign_paths(char **content, int i, t_texture *textures)
 {
-	texture_setup(&data->texture);
-	
+	char	**split_result;
+
+	split_result = ft_split(content[i], ' ');
+	if (!split_result || !split_result[0])
+		return (free_char_array(split_result));
+	if (!split_result[1])
+		return ;
+	if (ft_strcmp(split_result[0], "NO") == 0)
+		textures->north = ft_strdup(split_result[1]);
+	else if (ft_strcmp(split_result[0], "SO") == 0)
+		textures->south = ft_strdup(split_result[1]);
+	else if (ft_strcmp(split_result[0], "WE") == 0)
+		textures->west = ft_strdup(split_result[1]);
+	else if (ft_strcmp(split_result[0], "EA") == 0)
+		textures->east = ft_strdup(split_result[1]);
+	if (!check_file_type(split_result[1], ".xpm"))
+		return (free_char_array(split_result));
+	free_char_array(split_result);
+}
+
+void	get_text_path(t_map *map, t_texture *texture)
+{
+	int		lines;
+	int		i;
+
+	lines = count_lines_arr(map->content);
+	i = 0;
+	while (i < lines)
+	{
+		assign_paths(map->content, i, texture);
+		i++;
+	}
+}
+
+void	parse_textures(t_data *data)
+{
+	get_text_path(&data->map_info, &data->texture);
 }

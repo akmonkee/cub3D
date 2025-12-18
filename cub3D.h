@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/17 14:36:52 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/18 14:02:00 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@
 # define WIN_HEIGHT 480
 # define WIN_WIDTH 640
 # define ESC 65307
+
+typedef struct s_img
+{
+	void	*img;
+	int		*addr;
+	int		pixel_bits;
+	int		size_line;
+	int		endian;
+}	t_img;
 
 typedef struct s_texture
 {
@@ -95,14 +104,16 @@ typedef struct s_data
 	int			win_height;
 	int			win_width;
 	t_player	player;
-	t_texture	texture;
 	t_ray		ray;
-	char		**map;
+	t_texture	texture;
+	int			**texture_pixels;
 	int			**textures;
 	t_map		map_info;
+	char		**map;
 }	t_data;
 
 /*datasetup.c*/
+void	clear_img_setup(t_img *img);
 void	ray_set(t_ray *ray);
 void	player_setup(t_player *player);
 void	data_setup(t_data *data);
@@ -122,8 +133,11 @@ void	map_pop(t_map *map_info, char *path);
 void	parse_map(t_data *data, char *path);
 /*parse_texture.c*/
 void	texture_setup(t_texture *texture);
-void	parse_textures(t_data *data, void *mlx);
+void	assign_paths(char **content, int i, t_texture *textures);
+void	get_text_path(t_map *map, t_texture *texture);
+void	parse_textures(t_data *data);
 /*utils.c*/
+int		ft_strcmp(const char *s1, const char *s2);
 int		count_lines(char *file);
 int		count_lines_arr(char **arr);
 void	free_char_array(char **arr);
