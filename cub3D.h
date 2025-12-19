@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/18 14:11:13 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/19 11:54:21 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ void		raycasting(t_player *player, t_data *data);
 /*hook.c*/
 void		on_key_press_exit(t_data *data);
 int			on_keypress(int keysym, t_data *data);
+/*parse.c*/
+void		parse_data(t_data *data, char *path);
 /*parse_map.c*/
 int			check_file_type(char *file, char *type);
 void		map_setup(t_map *map_info);
@@ -149,6 +151,5 @@ char		*get_next_line(int fd);
 void		mlx_setup(t_data *data);
 void		m_texture_setup(t_data *data);
 void		texture_setup(t_texture *texture);
-void		parse_data(t_data *data, char *path);
 
 #endif

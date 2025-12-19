@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/18 14:24:13 by msisto           ###   ########.fr       */
+/*   Updated: 2025/12/19 11:53:48 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ void	mlx_setup(t_data *data)
 	if (!data->win)
 		exit(1);
 	return ;
-}
-
-void	parse_data(t_data *data, char *path)
-{
-	data_setup(data);
-	mlx_setup(data);
-	parse_map(data, path);
-	parse_textures(data);
 }
 
 int	main(int argc, char **argv)
