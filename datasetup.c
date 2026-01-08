@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/18 12:21:57 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/08 13:26:26 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	ray_set(t_ray *ray)
 
 void	player_setup(t_player *player)
 {
-	player->pos_x = 0;
-	player->pos_y = 0;
-	player->dir_x = 0;
-	player->dir_y = 0;
-	player->plane_x = 0;
-	player->plane_y = 0;
+	player->pos_x = -1.0;
+	player->pos_y = -1.0;
+	player->dir_x = -1.0;
+	player->dir_y = -1.0;
+	player->plane_x = -1.0;
+	player->plane_y = -1.0;
 }
 
 void	data_setup(t_data *data)

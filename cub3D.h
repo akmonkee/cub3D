@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/19 11:54:21 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/08 13:26:33 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,8 @@ void		texture_setup(t_texture *texture);
 void		assign_paths(char **content, int i, t_texture *textures);
 void		get_text_path(t_map *map, t_texture *texture);
 void		parse_textures(t_data *data);
+/*parse_player.c*/
+void		parse_player(t_data *data);
 /*utils.c*/
 int			ft_strcmp(const char *s1, const char *s2);
 int			count_lines(char *file);
