@@ -12,7 +12,10 @@ MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
 CC = gcc
 
-SRC = main.c hook.c raycast.c datasetup.c parse_map.c parse_texture.c parse_player.c utils.c get_next_line.c\
+SRC = main.c hook.c raycast.c datasetup.c \
+		parser/parse.c parser/parse_map.c parser/parse_texture.c parser/parse_player.c \
+		utils/utils.c utils/utils_2.c \
+		get_next_line.c \
 
 OBJ = $(SRC:.c=.o)
 

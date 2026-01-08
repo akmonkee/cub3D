@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/08 13:26:33 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/08 14:44:44 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,25 +126,30 @@ void		raycasting(t_player *player, t_data *data);
 /*hook.c*/
 void		on_key_press_exit(t_data *data);
 int			on_keypress(int keysym, t_data *data);
-/*parse.c*/
+/*parser/parse.c*/
 void		parse_data(t_data *data, char *path);
-/*parse_map.c*/
+/*parser/parse_map.c*/
 int			check_file_type(char *file, char *type);
 void		map_setup(t_map *map_info);
 void		map_pop(t_map *map_info, char *path);
 void		parse_map(t_data *data, char *path);
-/*parse_texture.c*/
+/*parser/parse_texture.c*/
 void		texture_setup(t_texture *texture);
 void		assign_paths(char **content, int i, t_texture *textures);
 void		get_text_path(t_map *map, t_texture *texture);
 void		parse_textures(t_data *data);
-/*parse_player.c*/
+/*parser/parse_player.c*/
+void		set_player_pos(size_t x, size_t y, t_player *player);
+void		get_player_pos_pl(t_map *map, t_player *player);
 void		parse_player(t_data *data);
-/*utils.c*/
+/*utils/utils.c*/
 int			ft_strcmp(const char *s1, const char *s2);
 int			count_lines(char *file);
+int			str_arr_len(char **str);
 int			count_lines_arr(char **arr);
 void		free_char_array(char **arr);
+/*utils/utils_2.c*/
+int			is_present(char c);
 /*get_next_line.c*/
 char		*get_line(int fd, char *buf, char *buffer);
 char		*clean_up(char *line);
