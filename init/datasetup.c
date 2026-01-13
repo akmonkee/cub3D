@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/09 14:00:26 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/13 14:04:42 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ void	clear_img_setup(t_img *img)
 	img->pixel_bits = 0;
 	img->size_line = 0;
 	img->endian = 0;
+}
+
+void	map_setup(t_map *map_info)
+{
+	map_info->content = NULL;
+	map_info->ceiling_color = -1;
+	map_info->floor_color = -1;
+	map_info->height = 0;
+	map_info->width = 0;
+	map_info->content_order = 0;
 }
 
 void	ray_set(t_ray *ray)

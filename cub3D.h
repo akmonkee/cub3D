@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/13 13:37:33 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/13 14:19:07 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct s_data
 
 /*datasetup.c*/
 void		clear_img_setup(t_img *img);
+void		map_setup(t_map *map_info);
 void		ray_set(t_ray *ray);
 void		player_setup(t_player *player);
 void		data_setup(t_data *data);
@@ -130,9 +131,9 @@ int			on_keypress(int keysym, t_data *data);
 void		parse_data(t_data *data, char *path);
 /*parser/parse_map.c*/
 int			check_file_type(char *file, char *type);
-void		map_setup(t_map *map_info);
 int			read_map_files(t_map *map_info, char *file);
 void		map_pop(t_map *map_info, char *path);
+void		get_just_map(t_data *data, t_map *map_info);
 void		parse_map(t_data *data, char *path);
 /*parser/parse_texture.c*/
 void		texture_setup(t_texture *texture);

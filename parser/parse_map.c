@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/13 13:28:00 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/13 14:32:09 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ int	check_file_type(char *file, char *type)
 		return (free(dot), 1);
 	else
 		return (free(dot), 0);
-}
-
-void	map_setup(t_map *map_info)
-{
-	map_info->content = NULL;
-	map_info->ceiling_color = -1;
-	map_info->floor_color = -1;
-	map_info->height = 0;
-	map_info->width = 0;
-	map_info->content_order = 0;
 }
 
 int	read_map_files(t_map *map_info, char *file)
@@ -95,6 +85,32 @@ void	map_pop(t_map *map_info, char *path)
 	}
 }
 
+void	get_just_map(t_data *data, t_map *map_info)
+{
+	int		arr_len;
+	int		actual_lines;
+	int		i;
+	int		j;
+
+	i = map_info->lst_itr;
+	arr_len = str_arr_len(map_info->content);
+	actual_lines = arr_len - map_info->lst_itr;
+	if (actual_lines <= 0)
+		return ;
+	data->map = ft_calloc(sizeof(char *), actual_lines + 1);
+	if (!data->map)
+		return ;
+	j = 0;
+	while (i < arr_len && map_info->content[i])
+	{
+		data->map[j] = ft_strdup(map_info->content[i]);
+		if (!data->map[j])
+			return (free_char_array(data->map));
+		i++;
+		j++;
+	}
+}
+
 void	parse_map(t_data *data, char *path)
 {
 	struct stat	buffer;
@@ -108,4 +124,6 @@ void	parse_map(t_data *data, char *path)
 	}
 	map_setup(&data->map_info);
 	map_pop(&data->map_info, path);
+	parse_textures(data);
+	get_just_map(data, &data->map_info);
 }
