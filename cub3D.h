@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/08 14:44:44 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/13 13:37:33 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ void		parse_data(t_data *data, char *path);
 /*parser/parse_map.c*/
 int			check_file_type(char *file, char *type);
 void		map_setup(t_map *map_info);
+int			read_map_files(t_map *map_info, char *file);
 void		map_pop(t_map *map_info, char *path);
 void		parse_map(t_data *data, char *path);
 /*parser/parse_texture.c*/
@@ -154,6 +155,14 @@ int			is_present(char c);
 char		*get_line(int fd, char *buf, char *buffer);
 char		*clean_up(char *line);
 char		*get_next_line(int fd);
+/*frees/free.c*/
+int			free_n_return(char **str, char *temp, char *msg);
+/*errors/errors.c*/
+int			err_msg_std(char *msg);
+/*errors/detailed_errors.c*/
+int			read_files(char *file);
+void		detailed_err_msg_order(char *path);
+void		mulitiple_de_msg(char *path1, char *path2);
 /*main.c*/
 void		mlx_setup(t_data *data);
 void		m_texture_setup(t_data *data);

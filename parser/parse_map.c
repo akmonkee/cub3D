@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/08 14:04:16 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/13 13:28:00 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,35 @@ void	map_setup(t_map *map_info)
 	map_info->content_order = 0;
 }
 
+int	read_map_files(t_map *map_info, char *file)
+{
+	int		fd;
+	int		i;
+	char	*line;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		perror("cub3D");
+		exit(1);
+	}
+	i = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		if (line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = '\0';
+		map_info->content[i] = ft_strdup(line);
+		free(line);
+		if (!map_info->content[i])
+			return (free_n_return(map_info->content, NULL, NULL), 0);
+		i++;
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (1);
+}
+
 void	map_pop(t_map *map_info, char *path)
 {
 	int	lines;
@@ -55,6 +84,11 @@ void	map_pop(t_map *map_info, char *path)
 	map_info->content = ft_calloc(sizeof(char *), (lines + 1));
 	map_info->content[lines] = NULL;
 	if (!map_info->content)
+	{
+		free_char_array(map_info->content);
+		map_info->content = NULL;
+	}
+	if (!read_map_files(map_info, path))
 	{
 		free_char_array(map_info->content);
 		map_info->content = NULL;

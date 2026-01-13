@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/13 12:27:44 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/13 13:16:19 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,16 @@ void	mlx_setup(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
+	{
+		on_key_press_exit(data);
 		exit(1);
+	}
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	if (!data->win)
+	{
+		on_key_press_exit(data);
 		exit(1);
+	}
 	return ;
 }
 

@@ -18,6 +18,8 @@ SRC = main/main.c main/hook.c \
 		raycast.c \
 		utils/utils.c utils/utils_2.c \
 		get_next_line.c \
+		frees/free.c \
+		errors/errors.c errors/detailed_errors.c \
 
 OBJ = $(SRC:.c=.o)
 
