@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/09 13:47:16 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/13 12:27:44 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*need to add a clean exit function for the 2 if statements*/
 void	mlx_setup(t_data *data)
 {
-	mlx_init(data->mlx);
+	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit(1);
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	parse_data(&data, argv[1]);
 	//ray_set(&data.ray);
 	//raycasting(&data.player, &data);
-	//mlx_hook(data.win, KeyPress, KeyPressMask, on_keypress, &data);
-	//mlx_loop(data.mlx);
+	mlx_hook(data.win, KeyPress, KeyPressMask, on_keypress, &data);
+	mlx_loop(data.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:46:55 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/09 13:47:10 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/13 12:40:01 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ void	on_key_press_exit(t_data *data)
 	if (data->mlx)
 	{
 		if (data->win)
-		{
 			mlx_destroy_window(data->mlx, data->win);
-			free(data->win);
-		}
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
+	if (data->map_info.content)
+		free_char_array(data->map_info.content);
+	if (data->map)
+		free_char_array(data->map);
 	if (data->texture.north)
 		free(data->texture.north);
 	if (data->texture.south)
