@@ -6,18 +6,11 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:36:32 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 11:40:30 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 12:41:22 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-
-int	check_just_chars(char c)
-{
-	if (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (1);
-	return (0);
-}
 
 int	check_for_map(t_map *map_info, int lines, int i)
 {

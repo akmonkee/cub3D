@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 11:49:06 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 13:04:59 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,65 +120,102 @@ typedef struct s_data
 	char		**map;
 }	t_data;
 
+/*checks*/
+
+/*check_map.c*/
+int			check_top_bot(t_map *map_info, char **map);
+int			check_surrounded(t_map *map_info, char **map);
+int			check_valid_chars(t_map *map_info, char **map);
+void		check_map(t_data *data, t_map *map_info);
+int			has_holes(char **map);
+/*checks.c*/
+int			check_file_type(char *file, char *type);
+int			check_instances(char *line);
+int			check_zero(char **map, char *line, int k);
+int			check_holes(char **map, char *line, int k);
+
+/*init*/
+
 /*datasetup.c*/
 void		clear_img_setup(t_img *img);
 void		map_setup(t_map *map_info);
 void		ray_set(t_ray *ray);
 void		player_setup(t_player *player);
 void		data_setup(t_data *data);
+
 /*raycast.c*/
 void		init_ray_info(int x, t_ray *ray, t_player *player);
 void		start_dda(t_ray *ray, t_player *player);
 void		perform_dda(t_data *data, t_ray *ray);
 void		line_calc(t_data *data, t_ray *ray, t_player *player);
 void		raycasting(t_player *player, t_data *data);
-/*hook.c*/
-void		on_key_press_exit(t_data *data);
-int			on_keypress(int keysym, t_data *data);
-/*parser/parse_colors.c*/
+
+/*parser*/
+
+/*parse_colors.c*/
 int			get_color(char *color_arr);
 int			assign_colors(char **content, int i, t_map *map_info);
 int			set_colors(t_map *map_info, int lines);
-/*parser/parse.c*/
+/*parse.c*/
 void		parse_data(t_data *data, char *path);
-/*parser/parse_map.c*/
-int			check_file_type(char *file, char *type);
+/*parse_map.c*/
 int			read_map_files(t_map *map_info, char *file);
 void		map_pop(t_data *data, t_map *map_info, char *path);
 void		get_just_map(t_data *data, t_map *map_info);
 void		parse_map(t_data *data, char *path);
-/*parser/parse_texture.c*/
+/*parse_texture.c*/
 void		texture_setup(t_texture *texture);
 void		assign_paths(char **content, int i, t_texture *textures);
 void		get_text_path(t_map *map, t_texture *texture);
 void		parse_textures(t_data *data);
-/*parser/parse_player.c*/
+/*parse_player.c*/
 void		set_player_pos(size_t x, size_t y, t_player *player);
 void		get_player_pos_pl(t_map *map, t_player *player);
 void		parse_player(t_data *data);
-/*utils/parse_map_utils.c*/
+
+/*utils*/
+
+/*check_map_utils.c*/
+void		mod_lst_it(t_map *map_info);
 int			check_just_chars(char c);
+void		get_h_w(t_map *map_info);
+int			check_one(char c);
+/*parse_map_utils.c*/
 int			check_for_map(t_map *map_info, int lines, int i);
-/*utils/utils.c*/
+/*utils.c*/
 int			ft_strcmp(const char *s1, const char *s2);
 int			count_lines(char *file);
 int			str_arr_len(char **str);
 int			count_lines_arr(char **arr);
 void		free_char_array(char **arr);
-/*utils/utils_2.c*/
+/*utils_2.c*/
+int			check_whole_str(char *str);
+int			str_arr_len_eof(char **str);
 int			is_present(char c);
 /*get_next_line.c*/
 char		*get_line(int fd, char *buf, char *buffer);
 char		*clean_up(char *line);
 char		*get_next_line(int fd);
-/*frees/free.c*/
+
+/*frees*/
+
+/*free.c*/
 int			free_n_return(char **str, char *temp, char *msg);
-/*errors/errors.c*/
+
+/*errors*/
+
+/*errors.c*/
 int			err_msg_std(char *msg);
-/*errors/detailed_errors.c*/
+/*detailed_errors.c*/
 int			read_files(char *file);
 void		detailed_err_msg_order(char *path);
 void		mulitiple_de_msg(char *path1, char *path2);
+
+/*main*/
+
+/*hook.c*/
+void		on_key_press_exit(t_data *data);
+int			on_keypress(int keysym, t_data *data);
 /*main.c*/
 void		mlx_setup(t_data *data);
 void		m_texture_setup(t_data *data);

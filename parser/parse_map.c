@@ -6,36 +6,11 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 12:21:08 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 13:01:53 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-
-/*need to add a check if the path is shorter than 5*/
-int	check_file_type(char *file, char *type)
-{
-	char	*dot;
-	int		i;
-	int		j;
-
-	if (!file)
-		return (0);
-	dot = malloc(sizeof(char) * 5);
-	if (!dot)
-		return (0);
-	i = (int)ft_strlen(file) - 5;
-	j = -1;
-	while (file[i] != '\0')
-	{
-		dot[++j] = file[++i];
-	}
-	dot[j] = '\0';
-	if (ft_strncmp(dot, type, ft_strlen(type)) == 0)
-		return (free(dot), 1);
-	else
-		return (free(dot), 0);
-}
 
 int	read_map_files(t_map *map_info, char *file)
 {
@@ -131,4 +106,5 @@ void	parse_map(t_data *data, char *path)
 	map_setup(&data->map_info);
 	map_pop(data, &data->map_info, path);
 	get_just_map(data, &data->map_info);
+	check_map(data, &data->map_info);
 }
