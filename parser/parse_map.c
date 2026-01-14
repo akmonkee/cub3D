@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/13 14:32:09 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 11:46:29 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	read_map_files(t_map *map_info, char *file)
 	return (1);
 }
 
-void	map_pop(t_map *map_info, char *path)
+void	map_pop(t_data *data, t_map *map_info, char *path)
 {
 	int	lines;
 
@@ -79,6 +79,12 @@ void	map_pop(t_map *map_info, char *path)
 		map_info->content = NULL;
 	}
 	if (!read_map_files(map_info, path))
+	{
+		free_char_array(map_info->content);
+		map_info->content = NULL;
+	}
+	parse_textures(data);
+	if (!set_colors(&data->map_info, lines))
 	{
 		free_char_array(map_info->content);
 		map_info->content = NULL;
@@ -123,7 +129,6 @@ void	parse_map(t_data *data, char *path)
 		return ;
 	}
 	map_setup(&data->map_info);
-	map_pop(&data->map_info, path);
-	parse_textures(data);
+	map_pop(data, &data->map_info, path);
 	get_just_map(data, &data->map_info);
 }

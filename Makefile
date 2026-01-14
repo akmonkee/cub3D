@@ -14,9 +14,9 @@ CC = gcc
 
 SRC = main/main.c main/hook.c \
 		init/datasetup.c \
-		parser/parse.c parser/parse_map.c parser/parse_texture.c parser/parse_player.c \
+		parser/parse_colors.c parser/parse.c parser/parse_map.c parser/parse_texture.c parser/parse_player.c \
 		raycast.c \
-		utils/utils.c utils/utils_2.c \
+		utils/utils.c utils/utils_2.c utils/parse_map_utils.c \
 		get_next_line.c \
 		frees/free.c \
 		errors/errors.c errors/detailed_errors.c \

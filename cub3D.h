@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/13 14:19:07 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 11:49:06 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,17 @@
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 
+# define ESC 65307
+
 # define WIN_HEIGHT 480
 # define WIN_WIDTH 640
-# define ESC 65307
+
+# define ERR_MSG "Error\nFailed to Populate.check File Paths Or Colour inputs\n"
+# define COLOR_MSG "err_files/color_order.txt"
+# define TEXTURE_MSG "err_files/texture_order.txt"
+# define MAP_MSG "err_files/map_order.txt"
+# define EXPECTED_MSG "err_files/expected_format.txt"
+# define COLOR_NEG "err_files/color_negative.txt"
 
 typedef struct s_img
 {
@@ -127,12 +135,16 @@ void		raycasting(t_player *player, t_data *data);
 /*hook.c*/
 void		on_key_press_exit(t_data *data);
 int			on_keypress(int keysym, t_data *data);
+/*parser/parse_colors.c*/
+int			get_color(char *color_arr);
+int			assign_colors(char **content, int i, t_map *map_info);
+int			set_colors(t_map *map_info, int lines);
 /*parser/parse.c*/
 void		parse_data(t_data *data, char *path);
 /*parser/parse_map.c*/
 int			check_file_type(char *file, char *type);
 int			read_map_files(t_map *map_info, char *file);
-void		map_pop(t_map *map_info, char *path);
+void		map_pop(t_data *data, t_map *map_info, char *path);
 void		get_just_map(t_data *data, t_map *map_info);
 void		parse_map(t_data *data, char *path);
 /*parser/parse_texture.c*/
@@ -144,6 +156,9 @@ void		parse_textures(t_data *data);
 void		set_player_pos(size_t x, size_t y, t_player *player);
 void		get_player_pos_pl(t_map *map, t_player *player);
 void		parse_player(t_data *data);
+/*utils/parse_map_utils.c*/
+int			check_just_chars(char c);
+int			check_for_map(t_map *map_info, int lines, int i);
 /*utils/utils.c*/
 int			ft_strcmp(const char *s1, const char *s2);
 int			count_lines(char *file);
