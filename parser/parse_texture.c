@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:56:54 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/13 13:51:35 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 12:15:38 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	get_text_path(t_map *map, t_texture *texture)
 		assign_paths(map->content, i, texture);
 		i++;
 	}
+	map->content_order = 1;
 }
 
 void	parse_textures(t_data *data)

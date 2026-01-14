@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:28:40 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 11:47:51 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 11:59:38 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	assign_colors(char **content, int i, t_map *map_info)
 		map_info->ceiling_color = get_color(split_result[1]);
 	free_char_array(split_result);
 	map_info->lst_itr = i + 1;
-	printf("----------------------------%d------------------------\n", map_info->lst_itr);
 	return (1);
 }
 
