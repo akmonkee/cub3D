@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 13:04:59 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 14:06:17 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,10 @@ typedef struct s_data
 /*checks*/
 
 /*check_map.c*/
-int			check_top_bot(t_map *map_info, char **map);
-int			check_surrounded(t_map *map_info, char **map);
-int			check_valid_chars(t_map *map_info, char **map);
-void		check_map(t_data *data, t_map *map_info);
+int			check_top_bot(t_map *map_info);
+int			check_surrounded(t_map *map_info);
+int			check_valid_chars(t_map *map_info);
+void		check_map(t_map *map_info);
 int			has_holes(char **map);
 /*checks.c*/
 int			check_file_type(char *file, char *type);

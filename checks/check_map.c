@@ -6,55 +6,55 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:29:39 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 12:58:43 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 14:11:30 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int	check_top_bot(t_map *map_info, char **map)
+int	check_top_bot(t_map *map_info)
 {
 	int	j;
 	int	i;
 
 	j = 0;
 	i = map_info->lst_itr;
-	while (map[i][j])
+	while (map_info->content[i][j])
 	{
-		if (map[map_info->lst_itr][j] != '1'
-			&& map[map_info->lst_itr][j] != ' ')
+		if (map_info->content[map_info->lst_itr][j] != '1'
+			&& map_info->content[map_info->lst_itr][j] != ' ')
 			return (0);
 		j++;
 	}
 	j = 0;
-	while (map[map_info->lst_itr + map_info->height - 1][j])
+	while (map_info->content[map_info->lst_itr + map_info->height - 1][j])
 	{
-		if (map[map_info->lst_itr + map_info->height - 1][j] != '1'
-			&& map[map_info->lst_itr + map_info->height - 1][j] != ' ')
+		if (map_info->content[map_info->lst_itr + map_info->height - 1][j] != '1'
+			&& map_info->content[map_info->lst_itr + map_info->height - 1][j] != ' ')
 			return (0);
 		j++;
 	}
 	return (1);
 }
 
-int	check_surrounded(t_map *map_info, char **map)
+int	check_surrounded(t_map *map_info)
 {
 	int	i;
 	int	len;
 
-	if (!map)
+	if (!map_info->content)
 		return (0);
 	i = map_info->lst_itr;
-	if (!check_top_bot(map_info, map))
+	if (!check_top_bot(map_info))
 		return (0);
 	while (i < map_info->lst_itr + map_info->height)
 	{
-		len = ft_strlen(map[i]);
-		if (map[i][0] != '1' && map[i][0] != ' ')
+		len = ft_strlen(map_info->content[i]);
+		if (map_info->content[i][0] != '1' && map_info->content[i][0] != ' ')
 			return (0);
 		if (len > 0)
 		{
-			if (map[i][len - 1] != '1' && map[i][len
+			if (map_info->content[i][len - 1] != '1' && map_info->content[i][len
 				- 1] != ' ')
 				return (0);
 		}
@@ -63,7 +63,7 @@ int	check_surrounded(t_map *map_info, char **map)
 	return (1);
 }
 
-int	check_valid_chars(t_map *map_info, char **map)
+int	check_valid_chars(t_map *map_info)
 {
 	int		i;
 	size_t	j;
@@ -71,13 +71,13 @@ int	check_valid_chars(t_map *map_info, char **map)
 	char	c;
 
 	i = map_info->lst_itr;
-	map_len = str_arr_len(map);
+	map_len = str_arr_len(map_info->content);
 	while (i < map_len)
 	{
 		j = 0;
-		while (j < ft_strlen(map[i]))
+		while (j < ft_strlen(map_info->content[i]))
 		{
-			c = map[i][j];
+			c = map_info->content[i][j];
 			if (!check_one(c))
 			{
 				printf("Error\nInvalid char: %c\n", c);
@@ -90,20 +90,20 @@ int	check_valid_chars(t_map *map_info, char **map)
 	return (1);
 }
 
-void	check_map(t_data *data, t_map *map_info)
+void	check_map(t_map *map_info)
 {
 	mod_lst_it(map_info);
 	get_h_w(map_info);
 	if (map_info->content_order != 2)
 		return ;
-	if (!check_surrounded(map_info, data->map))
+	if (!check_surrounded(map_info))
 	{
 		err_msg_std("The map is not surrounded");
 		return ;
 	}
-	if (!check_valid_chars(map_info, data->map))
+	if (!check_valid_chars(map_info))
 		return ;
-	if (!has_holes(data->map))
+	if (!has_holes(map_info->content))
 	{
 		err_msg_std("Can not contain empty spaces inside the map");
 		return ;

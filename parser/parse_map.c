@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 13:01:53 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/14 14:12:03 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,6 @@ void	parse_map(t_data *data, char *path)
 	}
 	map_setup(&data->map_info);
 	map_pop(data, &data->map_info, path);
+	check_map(&data->map_info);
 	get_just_map(data, &data->map_info);
-	check_map(data, &data->map_info);
 }
