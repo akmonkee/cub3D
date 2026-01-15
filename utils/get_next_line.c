@@ -6,11 +6,11 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:08:09 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/18 14:12:10 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/15 13:09:41 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 char	*get_line(int fd, char *buf, char *buffer)
 {

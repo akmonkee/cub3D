@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/13 13:16:19 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/15 12:56:27 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		exit(1);
 	parse_data(&data, argv[1]);
-	//ray_set(&data.ray);
-	//raycasting(&data.player, &data);
+	ray_set(&data.ray);
+	raycasting(&data.player, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, on_keypress, &data);
 	mlx_loop(data.mlx);
 	return (0);

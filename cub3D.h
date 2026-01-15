@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 14:06:17 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/15 13:13:05 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,7 @@ void		assign_paths(char **content, int i, t_texture *textures);
 void		get_text_path(t_map *map, t_texture *texture);
 void		parse_textures(t_data *data);
 /*parse_player.c*/
-void		set_player_pos(size_t x, size_t y, t_player *player);
-void		get_player_pos_pl(t_map *map, t_player *player);
+void		get_player_pos_pl(t_player *player, char **map);
 void		parse_player(t_data *data);
 
 /*utils*/
