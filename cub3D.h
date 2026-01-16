@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/15 13:13:05 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/16 12:28:57 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ int			get_color(char *color_arr);
 int			assign_colors(char **content, int i, t_map *map_info);
 int			set_colors(t_map *map_info, int lines);
 /*parse.c*/
+void		mlx_setup(t_data *data);
 void		parse_data(t_data *data, char *path);
 /*parse_map.c*/
 int			read_map_files(t_map *map_info, char *file);
@@ -216,8 +217,6 @@ void		mulitiple_de_msg(char *path1, char *path2);
 void		on_key_press_exit(t_data *data);
 int			on_keypress(int keysym, t_data *data);
 /*main.c*/
-void		mlx_setup(t_data *data);
-void		m_texture_setup(t_data *data);
 void		texture_setup(t_texture *texture);
 
 #endif
