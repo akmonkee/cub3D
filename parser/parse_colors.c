@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:28:40 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 11:59:38 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/19 13:19:15 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	get_color(char *color_arr)
 
 	color_split = ft_split(color_arr, ',');
 	if (!color_split || !color_split[0])
-		return (free_char_array(color_split), -1);
+		return (free_tab((void **)color_split), -1);
 	if (str_arr_len(color_split) != 3)
-		return (free_char_array(color_split), -1);
+		return (free_tab((void **)color_split), -1);
 	r = ft_atoi(color_split[0]);
 	g = ft_atoi(color_split[1]);
 	b = ft_atoi(color_split[2]);
 	color = (r << 16) | (g << 8) | b;
-	free_char_array(color_split);
+	free_tab((void **)color_split);
 	return (color);
 }
 
@@ -39,12 +39,12 @@ int	assign_colors(char **content, int i, t_map *map_info)
 
 	split_result = ft_split(content[i], ' ');
 	if (!split_result || !split_result[0])
-		return (free_char_array(split_result), 0);
+		return (free_tab((void **)split_result), 0);
 	if (ft_strcmp(split_result[0], "F") == 0)
 		map_info->floor_color = get_color(split_result[1]);
 	else if (ft_strcmp(split_result[0], "C") == 0)
 		map_info->ceiling_color = get_color(split_result[1]);
-	free_char_array(split_result);
+	free_tab((void **)split_result);
 	map_info->lst_itr = i + 1;
 	return (1);
 }

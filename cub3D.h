@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/16 12:28:57 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/19 13:20:26 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,12 @@ void		map_setup(t_map *map_info);
 void		ray_set(t_ray *ray);
 void		player_setup(t_player *player);
 void		data_setup(t_data *data);
+/*mlx_setup.c*/
+void		init_img_clean(t_img *img);
+void		img_setup(t_data *data, t_img *image, int width, int height);
+void		mlx_setup(t_data *data);
+
+/*render*/
 
 /*raycast.c*/
 void		init_ray_info(int x, t_ray *ray, t_player *player);
@@ -149,6 +155,12 @@ void		start_dda(t_ray *ray, t_player *player);
 void		perform_dda(t_data *data, t_ray *ray);
 void		line_calc(t_data *data, t_ray *ray, t_player *player);
 void		raycasting(t_player *player, t_data *data);
+/*render.c*/
+void		set_frame_image_pixel(t_data *data, t_img *image, int x, int y);
+void		render_frame(t_data *data);
+void		render_raycast(t_data *data);
+void		render_images(t_data *data);
+int			render(t_data *data);
 
 /*parser*/
 
@@ -157,7 +169,6 @@ int			get_color(char *color_arr);
 int			assign_colors(char **content, int i, t_map *map_info);
 int			set_colors(t_map *map_info, int lines);
 /*parse.c*/
-void		mlx_setup(t_data *data);
 void		parse_data(t_data *data, char *path);
 /*parse_map.c*/
 int			read_map_files(t_map *map_info, char *file);
@@ -187,7 +198,6 @@ int			ft_strcmp(const char *s1, const char *s2);
 int			count_lines(char *file);
 int			str_arr_len(char **str);
 int			count_lines_arr(char **arr);
-void		free_char_array(char **arr);
 /*utils_2.c*/
 int			check_whole_str(char *str);
 int			str_arr_len_eof(char **str);
@@ -200,6 +210,7 @@ char		*get_next_line(int fd);
 /*frees*/
 
 /*free.c*/
+void		free_tab(void **tab);
 int			free_n_return(char **str, char *temp, char *msg);
 
 /*errors*/

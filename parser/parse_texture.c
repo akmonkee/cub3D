@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:56:54 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 12:15:38 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/19 13:20:07 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	assign_paths(char **content, int i, t_texture *texture)
 
 	split_result = ft_split(content[i], ' ');
 	if (!split_result || !split_result[0])
-		return (free_char_array(split_result));
+		return (free_tab((void **)split_result));
 	if (!split_result[1])
-		return (free_char_array(split_result));
+		return (free_tab((void **)split_result));
 	if (ft_strcmp(split_result[0], "NO") == 0)
 		texture->north = ft_strdup(split_result[1]);
 	else if (ft_strcmp(split_result[0], "SO") == 0)
@@ -43,8 +43,8 @@ void	assign_paths(char **content, int i, t_texture *texture)
 	else if (ft_strcmp(split_result[0], "EA") == 0)
 		texture->east = ft_strdup(split_result[1]);
 	if (!check_file_type(split_result[1], ".xpm"))
-		return (free_char_array(split_result));
-	free_char_array(split_result);
+		return (free_tab((void **)split_result));
+	free_tab((void **)split_result);
 }
 
 void	get_text_path(t_map *map, t_texture *texture)
