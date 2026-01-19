@@ -6,11 +6,11 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:27:58 by msisto            #+#    #+#             */
-/*   Updated: 2025/12/11 12:15:41 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/19 12:19:50 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	init_ray_info(int x, t_ray *ray, t_player *player)
 {
