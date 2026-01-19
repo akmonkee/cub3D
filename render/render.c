@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:19:34 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 13:07:21 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/19 14:41:24 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	set_frame_image_pixel(t_data *data, t_img *image, int x, int y)
 	if (data->texture_pixels[y][x] > 0)
 		set_image_pixel(image, x, y, data->texture_pixels[y][x]);
 	else if (y < data->win_height / 2)
-		set_image_pixel(image, x, y, data->texinfo.hex_ceiling);
+		set_image_pixel(image, x, y, data->texture.hex_ceiling);
 	else if (y < data->win_height -1)
-		set_image_pixel(image, x, y, data->texinfo.hex_floor);
+		set_image_pixel(image, x, y, data->texture.hex_floor);
 }
 
 void	render_frame(t_data *data)

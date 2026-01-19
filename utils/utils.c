@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 14:22:35 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 13:20:12 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/19 14:41:34 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,12 @@ int	count_lines_arr(char **arr)
 	while (arr[i])
 		i++;
 	return (i);
+}
+
+void	set_image_pixel(t_img *image, int x, int y, int color)
+{
+	int	pixel;
+
+	pixel = y * (image->size_line / 4) + x;
+	image->addr[pixel] = color;
 }

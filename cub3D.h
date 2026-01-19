@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 13:20:26 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/19 14:43:45 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@
 # define EXPECTED_MSG "err_files/expected_format.txt"
 # define COLOR_NEG "err_files/color_negative.txt"
 
+enum e_texture_index
+{
+	NORTH = 0,
+	SOUTH = 1,
+	EAST = 2,
+	WEST = 3
+};
+
 typedef struct s_img
 {
 	void	*img;
@@ -48,16 +56,18 @@ typedef struct s_img
 
 typedef struct s_texture
 {
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	int		size;
-	int		index;
-	double	step;
-	double	pos;
-	int		x;
-	int		y;
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	unsigned long	hex_floor;
+	unsigned long	hex_ceiling;
+	int				size;
+	int				index;
+	double			step;
+	double			pos;
+	int				x;
+	int				y;
 }	t_texture;
 
 typedef struct s_player
@@ -145,7 +155,12 @@ void		data_setup(t_data *data);
 /*mlx_setup.c*/
 void		init_img_clean(t_img *img);
 void		img_setup(t_data *data, t_img *image, int width, int height);
+void		init_texture_img(t_data *data, t_img *image, char *path);
 void		mlx_setup(t_data *data);
+/*texture_setup.c*/
+int			*xpm_to_img(t_data *data, char *path);
+void		init_textures(t_data *data);
+void		texture_setup(t_texture *textures);
 
 /*render*/
 
@@ -161,6 +176,10 @@ void		render_frame(t_data *data);
 void		render_raycast(t_data *data);
 void		render_images(t_data *data);
 int			render(t_data *data);
+/*texture.c*/
+void		init_texture_pixels(t_data *data);
+void		get_texture_index(t_data *data, t_ray *ray);
+void		update_texture_pixels(t_data *data, t_texture *tex, t_ray *ray, int x);
 
 /*parser*/
 
@@ -176,7 +195,6 @@ void		map_pop(t_data *data, t_map *map_info, char *path);
 void		get_just_map(t_data *data, t_map *map_info);
 void		parse_map(t_data *data, char *path);
 /*parse_texture.c*/
-void		texture_setup(t_texture *texture);
 void		assign_paths(char **content, int i, t_texture *textures);
 void		get_text_path(t_map *map, t_texture *texture);
 void		parse_textures(t_data *data);
@@ -198,6 +216,7 @@ int			ft_strcmp(const char *s1, const char *s2);
 int			count_lines(char *file);
 int			str_arr_len(char **str);
 int			count_lines_arr(char **arr);
+void		set_image_pixel(t_img *image, int x, int y, int color);
 /*utils_2.c*/
 int			check_whole_str(char *str);
 int			str_arr_len_eof(char **str);
