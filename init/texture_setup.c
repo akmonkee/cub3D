@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 14:23:38 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 14:42:36 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/20 14:25:52 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	texture_setup(t_texture *textures)
 	textures->south = NULL;
 	textures->west = NULL;
 	textures->east = NULL;
+	textures->floor = NULL;
+	textures->ceiling = NULL;
 	textures->hex_floor = 0x0;
 	textures->hex_ceiling = 0x0;
 	textures->size = 64;

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:27:58 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 12:19:50 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/20 13:42:33 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	raycasting(t_player *player, t_data *data)
 		start_dda(&ray, player);
 		perform_dda(data, &ray);
 		line_calc(data, &ray, player);
+		update_t_pixels(data, &data->texture, &ray, x);
 		x++;
 	}
 }

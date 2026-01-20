@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:09:20 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 14:44:12 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/20 13:43:46 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	get_texture_index(t_data *data, t_ray *ray)
 	}
 }
 
-void	update_texture_pixels(t_data *data, t_texture *tex, t_ray *ray, int x)
+void	update_t_pixels(t_data *data, t_texture *tex, t_ray *ray, int x)
 {
 	int			y;
 	int			color;

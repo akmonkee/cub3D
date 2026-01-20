@@ -6,11 +6,27 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:46:55 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 13:14:58 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/20 14:31:28 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+void	t_struct_free(t_texture *texture)
+{
+	if (texture->north)
+		free(texture->north);
+	if (texture->south)
+		free(texture->south);
+	if (texture->west)
+		free(texture->west);
+	if (texture->east)
+		free(texture->east);
+	if (texture->floor)
+		free(texture->floor);
+	if (texture->ceiling)
+		free(texture->ceiling);
+}
 
 void	on_key_press_exit(t_data *data)
 {
@@ -23,18 +39,11 @@ void	on_key_press_exit(t_data *data)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
+	t_struct_free(&data->texture);
 	if (data->map_info.content)
 		free_tab((void **)data->map_info.content);
 	if (data->map)
 		free_tab((void **)data->map);
-	if (data->texture.north)
-		free(data->texture.north);
-	if (data->texture.south)
-		free(data->texture.south);
-	if (data->texture.west)
-		free(data->texture.west);
-	if (data->texture.east)
-		free(data->texture.east);
 	if (data->texture_pixels)
 		free_tab((void **)data->texture_pixels);
 	if (data->textures)

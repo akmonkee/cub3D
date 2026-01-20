@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 14:43:45 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/20 14:53:14 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ typedef struct s_texture
 	char			*south;
 	char			*west;
 	char			*east;
+	int				*floor;
+	int				*ceiling;
 	unsigned long	hex_floor;
 	unsigned long	hex_ceiling;
 	int				size;
@@ -110,8 +112,6 @@ typedef struct s_map
 	int			height;
 	int			lst_itr;
 	int			playr_count;
-	int			floor_color;
-	int			ceiling_color;
 	int			content_order;
 }				t_map;
 
@@ -179,14 +179,15 @@ int			render(t_data *data);
 /*texture.c*/
 void		init_texture_pixels(t_data *data);
 void		get_texture_index(t_data *data, t_ray *ray);
-void		update_texture_pixels(t_data *data, t_texture *tex, t_ray *ray, int x);
+void		update_t_pixels(t_data *data, t_texture *tex, t_ray *ray, int x);
 
 /*parser*/
 
 /*parse_colors.c*/
-int			get_color(char *color_arr);
-int			assign_colors(char **content, int i, t_map *map_info);
-int			set_colors(t_map *map_info, int lines);
+int			*get_color(char *line);
+void		assign_colors(t_texture *tex, char *line);
+int			set_colors(t_texture *tex, t_map *map_info, int lines);
+
 /*parse.c*/
 void		parse_data(t_data *data, char *path);
 /*parse_map.c*/
@@ -244,6 +245,7 @@ void		mulitiple_de_msg(char *path1, char *path2);
 /*main*/
 
 /*hook.c*/
+void		t_struct_free(t_texture *texture);
 void		on_key_press_exit(t_data *data);
 int			on_keypress(int keysym, t_data *data);
 /*main.c*/

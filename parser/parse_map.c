@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 13:19:52 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/20 14:57:11 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	map_pop(t_data *data, t_map *map_info, char *path)
 		map_info->content = NULL;
 	}
 	parse_textures(data);
-	if (!set_colors(&data->map_info, lines))
+	if (!set_colors(&data->texture, &data->map_info, lines))
 	{
 		free_tab((void **)map_info->content);
 		map_info->content = NULL;
