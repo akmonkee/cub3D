@@ -6,11 +6,17 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:12:45 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 13:18:25 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 12:19:29 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+void	free_exit(t_data *data)
+{
+	on_key_press_exit(data);
+	exit(1);
+}
 
 void	free_tab(void **tab)
 {

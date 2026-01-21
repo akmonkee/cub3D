@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:27:58 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/20 13:42:33 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 13:24:05 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_ray_info(int x, t_ray *ray, t_player *player)
 	ray->map_y = (int)player->pos_y;
 	ray->deltadist_x = fabs(1 / ray->raydir_x);
 	ray->deltadist_y = fabs(1 / ray->raydir_y);
+	printf("raydir_x: %f\nraydir_y: %f\ndelta_x: %f\ndelta_y: %f\n", ray->raydir_x, ray->raydir_y, ray->deltadist_x, ray->deltadist_y);
 }
 
 void	start_dda(t_ray *ray, t_player *player)
@@ -67,9 +68,12 @@ void	perform_dda(t_data *data, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_y < 0.25 || ray->map_x < 0.25)
+		if (ray->map_y < 0.25
+			|| ray->map_x < 0.25
+			|| ray->map_y > data->map_info.height - 0.25
+			|| ray->map_x > data->map_info.width - 1.25)
 			break ;
-		if (data->map[ray->map_y][ray->map_x] > '0')
+		else if (data->map[ray->map_y][ray->map_x] > '0')
 			hit = 1;
 	}
 }
@@ -84,6 +88,7 @@ void	line_calc(t_data *data, t_ray *ray, t_player *player)
 	ray->draw_start = -ray->line_height / 2 + data->win_height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
+	printf("%f\n", ray->perpwalldist);
 	ray->draw_end = ray->line_height / 2 + data->win_height / 2;
 	if (ray->draw_end >= data->win_height)
 		ray->draw_end = data->win_height - 1;
@@ -91,6 +96,7 @@ void	line_calc(t_data *data, t_ray *ray, t_player *player)
 		ray->wall_x = player->pos_y + ray->perpwalldist * ray->dir_y;
 	else
 		ray->wall_x = player->pos_x + ray->perpwalldist * ray->dir_x;
+	ray->wall_x -= floor(ray->wall_x);
 }
 
 void	raycasting(t_player *player, t_data *data)

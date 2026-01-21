@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/20 14:53:14 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 12:19:52 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,7 @@ char		*get_next_line(int fd);
 /*frees*/
 
 /*free.c*/
+void		free_exit(t_data *data);
 void		free_tab(void **tab);
 int			free_n_return(char **str, char *temp, char *msg);
 

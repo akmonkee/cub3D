@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:28:40 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/20 14:56:11 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 12:33:00 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	assign_colors(t_texture *tex, char *line)
 		tex->ceiling = get_color(split_result[1]);
 	else
 		tex->floor = get_color(split_result[1]);
+	free_tab((void **)split_result);
 }
 
 int	set_colors(t_texture *tex, t_map *map_info, int lines)

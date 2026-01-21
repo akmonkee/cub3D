@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 14:23:38 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/20 14:25:52 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 12:21:29 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	*xpm_to_img(t_data *data, char *path)
 	buffer = ft_calloc(1,
 			sizeof * buffer * data->texture.size * data->texture.size);
 	if (!buffer)
-		on_key_press_exit(data);
+		free_exit(data);
 	y = 0;
 	while (y < data->texture.size)
 	{
@@ -44,7 +44,7 @@ void	init_textures(t_data *data)
 {
 	data->textures = ft_calloc(5, sizeof * data->textures);
 	if (!data->textures)
-		on_key_press_exit(data);
+		free_exit(data);
 	data->textures[NORTH] = xpm_to_img(data, data->texture.north);
 	data->textures[SOUTH] = xpm_to_img(data, data->texture.south);
 	data->textures[EAST] = xpm_to_img(data, data->texture.east);

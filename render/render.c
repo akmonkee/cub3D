@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:19:34 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/19 14:41:24 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 13:19:18 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ void	render_frame(t_data *data)
 
 void	render_raycast(t_data *data)
 {
+	init_texture_pixels(data);
 	ray_set(&data->ray);
 	raycasting(&data->player, data);
+	render_frame(data);
 }
 
 void	render_images(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:09:20 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/20 13:43:46 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 13:24:02 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	init_texture_pixels(t_data *data)
 	data->texture_pixels = ft_calloc(data->win_height + 1,
 			sizeof * data->texture_pixels);
 	if (!data->texture_pixels)
-		on_key_press_exit(data);
+		free_exit(data);
 	i = 0;
 	while (i < data->win_height)
 	{
 		data->texture_pixels[i] = ft_calloc(data->win_width + 1,
 				sizeof * data->texture_pixels);
 		if (!data->texture_pixels[i])
-			on_key_press_exit(data);
+			free_exit(data);
 		i++;
 	}
 }
@@ -56,6 +56,7 @@ void	update_t_pixels(t_data *data, t_texture *tex, t_ray *ray, int x)
 	int			y;
 	int			color;
 
+	init_texture_pixels(data);
 	get_texture_index(data, ray);
 	tex->x = (int)(ray->wall_x * tex->size);
 	if ((ray->side == 0 && ray->dir_x < 0)
@@ -65,6 +66,8 @@ void	update_t_pixels(t_data *data, t_texture *tex, t_ray *ray, int x)
 	tex->pos = (ray->draw_start - data->win_height / 2
 			+ ray->line_height / 2) * tex->step;
 	y = ray->draw_start;
+	printf("%d\n", ray->draw_end);
+	free_exit(data);
 	while (y < ray->draw_end)
 	{
 		tex->y = (int)tex->pos & (tex->size - 1);
