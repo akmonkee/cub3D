@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:27:58 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/21 13:24:05 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 14:26:16 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_ray_info(int x, t_ray *ray, t_player *player)
 	ray->map_y = (int)player->pos_y;
 	ray->deltadist_x = fabs(1 / ray->raydir_x);
 	ray->deltadist_y = fabs(1 / ray->raydir_y);
-	printf("raydir_x: %f\nraydir_y: %f\ndelta_x: %f\ndelta_y: %f\n", ray->raydir_x, ray->raydir_y, ray->deltadist_x, ray->deltadist_y);
 }
 
 void	start_dda(t_ray *ray, t_player *player)

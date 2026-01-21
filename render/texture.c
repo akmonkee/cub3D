@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:09:20 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/21 13:24:02 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 14:25:31 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void	update_t_pixels(t_data *data, t_texture *tex, t_ray *ray, int x)
 	tex->pos = (ray->draw_start - data->win_height / 2
 			+ ray->line_height / 2) * tex->step;
 	y = ray->draw_start;
-	printf("%d\n", ray->draw_end);
-	free_exit(data);
 	while (y < ray->draw_end)
 	{
 		tex->y = (int)tex->pos & (tex->size - 1);

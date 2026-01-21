@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/21 12:17:31 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 14:36:40 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 		exit(1);
 	parse_data(&data, argv[1]);
 	init_textures(&data);
+	init_player_direction(&data);
 	render_images(&data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, on_keypress, &data);
 	mlx_loop_hook(data.mlx, render, &data);

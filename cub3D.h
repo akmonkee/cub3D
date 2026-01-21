@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/21 12:19:52 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/21 14:38:16 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_texture
 
 typedef struct s_player
 {
+	char	dir;
 	double	pos_x;
 	double	pos_y;
 	double	dir_x;
@@ -242,6 +243,13 @@ int			err_msg_std(char *msg);
 int			read_files(char *file);
 void		detailed_err_msg_order(char *path);
 void		mulitiple_de_msg(char *path1, char *path2);
+
+/*movement*/
+
+/*player_dir.c*/
+void		init_player_north_south(t_player *player);
+void		init_player_east_west(t_player *player);
+void		init_player_direction(t_data *data);
 
 /*main*/
 
