@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:27:58 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/21 14:26:16 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/22 13:08:37 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	line_calc(t_data *data, t_ray *ray, t_player *player)
 	ray->draw_start = -ray->line_height / 2 + data->win_height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	printf("%f\n", ray->perpwalldist);
 	ray->draw_end = ray->line_height / 2 + data->win_height / 2;
 	if (ray->draw_end >= data->win_height)
 		ray->draw_end = data->win_height - 1;
@@ -111,7 +110,7 @@ void	raycasting(t_player *player, t_data *data)
 		start_dda(&ray, player);
 		perform_dda(data, &ray);
 		line_calc(data, &ray, player);
-		update_t_pixels(data, &data->texture, &ray, x);
+		update_tp(data, &data->texture, &ray, x);
 		x++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:16:14 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/21 14:41:22 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/22 11:36:17 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	get_player_pos_pl(t_player *player, char **map)
 		{
 			if (is_present(map[i][j]))
 			{
-				player->dir = map[i][j];
+				if (ft_strchr("NSEW", map[i][j]))
+					player->dir = map[i][j];
 				player->pos_x = (double)j;
 				player->pos_y = (double)i;
 			}

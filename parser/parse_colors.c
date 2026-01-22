@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:28:40 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/21 12:33:00 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/22 12:12:13 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,20 @@ void	assign_colors(t_texture *tex, char *line)
 	free_tab((void **)split_result);
 }
 
+unsigned long	convert_rgb_to_hex(int *rgb_tab)
+{
+	unsigned long	result;
+	int				r;
+	int				g;
+	int				b;
+
+	r = rgb_tab[0];
+	g = rgb_tab[1];
+	b = rgb_tab[2];
+	result = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+	return (result);
+}
+
 int	set_colors(t_texture *tex, t_map *map_info, int lines)
 {
 	int	i;
@@ -63,6 +77,8 @@ int	set_colors(t_texture *tex, t_map *map_info, int lines)
 		}
 		i++;
 	}
+	tex->hex_floor = convert_rgb_to_hex(tex->floor);
+	tex->hex_ceiling = convert_rgb_to_hex(tex->ceiling);
 	if (!check_for_map(map_info, lines, k))
 		return (detailed_err_msg_order(EXPECTED_MSG), 0);
 	map_info->content_order = 2;

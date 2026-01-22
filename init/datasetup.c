@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/21 14:38:45 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/22 11:45:25 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ray_set(t_ray *ray)
 void	player_setup(t_player *player)
 {
 	player->dir = '\0';
+	player->moved = 0;
 	player->pos_x = -1.0;
 	player->pos_y = -1.0;
 	player->dir_x = -1.0;

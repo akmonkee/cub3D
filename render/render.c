@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:19:34 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/21 13:19:18 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/22 14:25:30 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	render_images(t_data *data)
 
 int	render(t_data *data)
 {
+	if (data->player.moved == 0)
+		return (0);
 	render_images(data);
 	return (0);
 }
