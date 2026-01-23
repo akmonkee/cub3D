@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/23 11:41:46 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/23 14:25:57 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	int		rotate;
 }	t_player;
 
 typedef struct s_raycast
@@ -248,17 +249,26 @@ void			mulitiple_de_msg(char *path1, char *path2);
 
 /*movement*/
 
+/*input.c*/
+int				key_press_handler(int key, t_data *data);
+int				key_release_handler(int key, t_data *data);
+void			input(t_data *data);
 /*player_dir.c*/
 void			init_player_north_south(t_player *player);
 void			init_player_east_west(t_player *player);
 void			init_player_direction(t_data *data);
+/*player_move.c*/
+int				move_player(t_data *data);
+/*player_rotate.c*/
+int				rotate_left_right(t_data *data, double rotspeed);
+int				rotate_player(t_data *data, double rotdir);
 
 /*main*/
 
 /*hook.c*/
 void			t_struct_free(t_texture *texture);
 void			on_key_press_exit(t_data *data);
-int				on_keypress(int keysym, t_data *data);
+int				quit(t_data *data);
 /*main.c*/
 void			texture_setup(t_texture *texture);
 

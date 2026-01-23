@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/22 11:45:25 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/23 14:01:50 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	player_setup(t_player *player)
 	player->dir_y = -1.0;
 	player->plane_x = -1.0;
 	player->plane_y = -1.0;
+	player->rotate = 0;
 }
 
 void	data_setup(t_data *data)

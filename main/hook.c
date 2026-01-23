@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:46:55 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/20 14:31:28 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/23 14:17:30 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,8 @@ void	on_key_press_exit(t_data *data)
 		free_tab((void **)data->textures);
 }
 
-int	on_keypress(int keysym, t_data *data)
+int	quit(t_data *data)
 {
-	if (keysym == ESC)
-	{
-		on_key_press_exit(data);
-		exit(0);
-	}
+	free_exit(data);
 	return (0);
 }

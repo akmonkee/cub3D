@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/12 11:24:33 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/23 14:07:02 by msisto           ###   ########.fr       */
+/*   Created: 2026/01/23 14:22:53 by msisto            #+#    #+#             */
+/*   Updated: 2026/01/23 14:24:50 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int	main(int argc, char **argv)
+int	move_player(t_data *data)
 {
-	t_data		data;
+	int	moved;
 
-	if (argc != 2)
-		exit(1);
-	parse_data(&data, argv[1]);
-	init_textures(&data);
-	init_player_direction(&data);
-	render_images(&data);
-	input(&data);
-	mlx_loop_hook(data.mlx, render, &data);
-	mlx_loop(data.mlx);
-	return (0);
+	moved = 0;
+	if (data->player.rotate != 0)
+		moved += rotate_player(data, data->player.rotate);
+	return (moved);
 }
