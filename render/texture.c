@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:09:20 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/22 14:30:25 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/23 11:39:40 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	update_tp(t_data *data, t_texture *tex, t_ray *ray, int x)
 	int			y;
 	int			color;
 
-	init_texture_pixels(data);
 	get_texture_index(data, ray);
 	tex->x = (int)(ray->wall_x * tex->size);
 	if ((ray->side == 0 && ray->dir_x < 0)

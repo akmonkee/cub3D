@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/22 13:08:37 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/23 11:41:46 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 
 # define ESC 65307
 
-# define WIN_HEIGHT 480
-# define WIN_WIDTH 640
+# define WIN_HEIGHT 720
+# define WIN_WIDTH 960
 
 # define ERR_MSG "Error\nFailed to Populate.check File Paths Or Colour inputs\n"
 # define COLOR_MSG "err_files/color_order.txt"
