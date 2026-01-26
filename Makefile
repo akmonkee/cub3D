@@ -13,7 +13,7 @@ MINILIBX = $(MINILIBX_PATH)/libmlx.a
 CC = gcc
 
 SRC = main/main.c main/hook.c \
-		movement/player_dir.c movement/player_rotate.c movement/input.c movement/player_move.c \
+		movement/player_dir.c movement/player_rotate.c movement/input.c movement/player_move.c movement/player_check.c \
 		init/datasetup.c init/mlx_setup.c init/texture_setup.c\
 		checks/check_map.c checks/checks.c \
 		parser/parse_colors.c parser/parse.c parser/parse_map.c parser/parse_texture.c parser/parse_player.c \

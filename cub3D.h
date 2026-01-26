@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/23 14:25:57 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/26 13:23:29 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,17 @@
 # include <sys/time.h>
 # include <sys/stat.h>
 # include <math.h>
+# include <X11/keysym.h>
 # include <X11/X.h>
+# include <stdbool.h>
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 
-# define ESC 65307
-
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 960
+
+# define ROTSPEED 0.1
+# define MOVSPEED 0.1
 
 # define ERR_MSG "Error\nFailed to Populate.check File Paths Or Colour inputs\n"
 # define COLOR_MSG "err_files/color_order.txt"
@@ -82,6 +85,8 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	int		move_x;
+	int		move_y;
 	int		rotate;
 }	t_player;
 
@@ -253,11 +258,19 @@ void			mulitiple_de_msg(char *path1, char *path2);
 int				key_press_handler(int key, t_data *data);
 int				key_release_handler(int key, t_data *data);
 void			input(t_data *data);
+/*player_check.c*/
+bool			map_pos_check(t_data *data, double x, double y);
+bool			is_valid_pos(t_data *data, double x, double y);
+int				validate_move(t_data *data, double new_x, double new_y);
 /*player_dir.c*/
 void			init_player_north_south(t_player *player);
 void			init_player_east_west(t_player *player);
 void			init_player_direction(t_data *data);
 /*player_move.c*/
+int				move_forward(t_data *data);
+int				move_backward(t_data *data);
+int				move_left(t_data *data);
+int				move_right(t_data *data);
 int				move_player(t_data *data);
 /*player_rotate.c*/
 int				rotate_left_right(t_data *data, double rotspeed);

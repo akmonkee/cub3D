@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:57:18 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/23 14:29:27 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/26 13:23:00 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	rotate_player(t_data *data, double rotdir)
 	double	rotspeed;
 
 	moved = 0;
-	rotspeed = 0.060 * rotdir;
+	rotspeed = ROTSPEED * rotdir;
 	moved += rotate_left_right(data, rotspeed);
 	return (moved);
 }
