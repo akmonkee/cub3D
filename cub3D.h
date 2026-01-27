@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/26 13:23:29 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/27 13:17:22 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 960
 
-# define ROTSPEED 0.1
-# define MOVSPEED 0.1
+# define ROTSPEED 0.015
+# define MOVSPEED 0.015
 
 # define ERR_MSG "Error\nFailed to Populate.check File Paths Or Colour inputs\n"
 # define COLOR_MSG "err_files/color_order.txt"
@@ -109,8 +109,6 @@ typedef struct s_raycast
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	double	raydir_x;
-	double	raydir_y;
 }	t_ray;
 
 typedef struct s_map

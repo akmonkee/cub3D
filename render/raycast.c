@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:27:58 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/22 13:08:37 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/27 13:18:04 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	init_ray_info(int x, t_ray *ray, t_player *player)
 {
 	ray_set(ray);
 	ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
-	ray->raydir_x = player->dir_x + player->plane_x * ray->camera_x;
-	ray->raydir_y = player->dir_y + player->plane_y * ray->camera_x;
+	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
+	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
-	ray->deltadist_x = fabs(1 / ray->raydir_x);
-	ray->deltadist_y = fabs(1 / ray->raydir_y);
+	ray->deltadist_x = fabs(1 / ray->dir_x);
+	ray->deltadist_y = fabs(1 / ray->dir_y);
 }
 
 void	start_dda(t_ray *ray, t_player *player)
 {
-	if (ray->raydir_x < 0)
+	if (ray->dir_x < 0)
 	{
 		ray->step_x = -1;
 		ray->sidedist_x = (player->pos_x - ray->map_x) * ray->deltadist_x;
@@ -36,7 +36,7 @@ void	start_dda(t_ray *ray, t_player *player)
 		ray->step_x = 1;
 		ray->sidedist_x = (ray->map_x + 1.0 - player->pos_x) * ray->deltadist_x;
 	}
-	if (ray->raydir_y < 0)
+	if (ray->dir_y < 0)
 	{
 		ray->step_y = -1;
 		ray->sidedist_y = (player->pos_y - ray->map_y) * ray->deltadist_y;
@@ -84,7 +84,7 @@ void	line_calc(t_data *data, t_ray *ray, t_player *player)
 	else
 		ray->perpwalldist = (ray->sidedist_y - ray->deltadist_y);
 	ray->line_height = (int)(data->win_height / ray->perpwalldist);
-	ray->draw_start = -ray->line_height / 2 + data->win_height / 2;
+	ray->draw_start = -(ray->line_height) / 2 + data->win_height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
 	ray->draw_end = ray->line_height / 2 + data->win_height / 2;

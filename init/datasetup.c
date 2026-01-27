@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/26 12:46:48 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/27 13:18:31 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void	ray_set(t_ray *ray)
 	ray->line_height = 0;
 	ray->draw_start = 0;
 	ray->draw_end = 0;
-	ray->raydir_x = 0;
-	ray->raydir_y = 0;
 }
 
 void	player_setup(t_player *player)
