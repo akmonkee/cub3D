@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:01:56 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/22 14:16:47 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/27 14:35:09 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	init_texture_img(t_data *data, t_img *image, char *path)
 	return ;
 }
 
-/*need to add a clean exit function for the 2 if statements*/
 void	mlx_setup(t_data *data)
 {
 	data->mlx = mlx_init();

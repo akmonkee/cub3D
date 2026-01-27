@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/20 14:57:11 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/27 14:10:18 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ void	get_just_map(t_data *data, t_map *map_info)
 	arr_len = str_arr_len(map_info->content);
 	actual_lines = arr_len - map_info->lst_itr;
 	if (actual_lines <= 0)
-		return ;
+		free_exit(data);
 	data->map = ft_calloc(sizeof(char *), actual_lines + 1);
 	if (!data->map)
-		return ;
+		free_exit(data);
 	j = 0;
 	while (i < arr_len && map_info->content[i])
 	{
@@ -97,11 +97,11 @@ void	parse_map(t_data *data, char *path)
 	struct stat	buffer;
 
 	if (!check_file_type(path, ".cub"))
-		return ;
+		free_exit(data);
 	if (stat(path, &buffer) != 0)
 	{
 		printf("Error\nFile not found %s\n", path);
-		return ;
+		free_exit(data);
 	}
 	map_setup(&data->map_info);
 	map_pop(data, &data->map_info, path);
