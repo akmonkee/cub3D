@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:09:20 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/27 13:10:04 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/30 13:31:49 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	init_texture_pixels(t_data *data)
 	data->texture_pixels = ft_calloc(data->win_height + 1,
 			sizeof * data->texture_pixels);
 	if (!data->texture_pixels)
-		free_exit(data);
+		free_exit(data, 3);
 	i = 0;
 	while (i < data->win_height)
 	{
 		data->texture_pixels[i] = ft_calloc(data->win_width + 1,
 				sizeof * data->texture_pixels);
 		if (!data->texture_pixels[i])
-			free_exit(data);
+			free_exit(data, 3);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:46:55 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/27 14:32:53 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/30 13:06:34 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	t_struct_free(t_texture *texture)
 		free(texture->ceiling);
 }
 
-void	on_key_press_exit(t_data *data)
+void	on_key_press_exit(t_data *data, int lvl)
 {
 	if (!data)
 		exit (1);
@@ -40,19 +40,20 @@ void	on_key_press_exit(t_data *data)
 		mlx_loop_end(data->mlx);
 		free(data->mlx);
 	}
-	t_struct_free(&data->texture);
-	if (data->map_info.content)
-		free_tab((void **)data->map_info.content);
 	if (data->map)
 		free_tab((void **)data->map);
 	if (data->texture_pixels)
 		free_tab((void **)data->texture_pixels);
 	if (data->textures)
 		free_tab((void **)data->textures);
+	if (lvl >= 2 && data->map_info.content)
+		free_tab((void **)data->map_info.content);
+	if (lvl >= 3)
+		t_struct_free(&data->texture);
 }
 
 int	quit(t_data *data)
 {
-	free_exit(data);
+	free_exit(data, 3);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/27 13:17:22 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/30 12:41:38 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,7 +237,7 @@ char			*get_next_line(int fd);
 /*frees*/
 
 /*free.c*/
-void			free_exit(t_data *data);
+void			free_exit(t_data *data, int lvl);
 void			free_tab(void **tab);
 int				free_n_return(char **str, char *temp, char *msg);
 
@@ -278,7 +278,7 @@ int				rotate_player(t_data *data, double rotdir);
 
 /*hook.c*/
 void			t_struct_free(t_texture *texture);
-void			on_key_press_exit(t_data *data);
+void			on_key_press_exit(t_data *data, int lvl);
 int				quit(t_data *data);
 /*main.c*/
 void			texture_setup(t_texture *texture);

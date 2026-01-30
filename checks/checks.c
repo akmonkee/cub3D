@@ -6,13 +6,12 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:29:42 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/14 13:01:56 by msisto           ###   ########.fr       */
+/*   Updated: 2026/01/30 13:26:13 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-/*need to add a check if the path is shorter than 5*/
 int	check_file_type(char *file, char *type)
 {
 	char	*dot;
@@ -20,6 +19,8 @@ int	check_file_type(char *file, char *type)
 	int		j;
 
 	if (!file)
+		return (0);
+	if (ft_strlen(file) < 5)
 		return (0);
 	dot = malloc(sizeof(char) * 5);
 	if (!dot)
