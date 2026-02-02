@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:16:14 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/26 12:36:27 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/02 12:57:33 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 void	get_player_pos_pl(t_player *player, char **map)
 {
-	int		map_len;
 	int		i;
 	size_t	temp_len;
 	size_t	j;
 
 	i = 0;
-	map_len = str_arr_len(map);
 	temp_len = 0;
-	while (i < map_len)
+	while (i < str_arr_len(map))
 	{
 		j = 0;
 		temp_len = ft_strlen(map[i]);

@@ -6,11 +6,25 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:28:40 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/22 12:12:13 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/02 12:44:58 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+static int	rgb_check(char *num)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < ft_strlen(num))
+	{
+		if (!ft_isdigit(num[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	*get_color(char *line)
 {
@@ -22,6 +36,9 @@ int	*get_color(char *line)
 		return (free_tab((void **)color_split), NULL);
 	if (str_arr_len(color_split) != 3)
 		return (free_tab((void **)color_split), NULL);
+	if (rgb_check(color_split[0]) || rgb_check(color_split[1])
+		|| rgb_check(color_split[2]))
+		return (free_tab((void **)color_split), NULL);
 	rgb = malloc(sizeof(int) * 3);
 	if (!rgb)
 		return (free_tab((void **)color_split), NULL);
@@ -29,6 +46,9 @@ int	*get_color(char *line)
 	rgb[1] = ft_atoi(color_split[1]);
 	rgb[2] = ft_atoi(color_split[2]);
 	free_tab((void **)color_split);
+	if ((rgb[0] < 0 || rgb[0] > 255) || (rgb[1] < 0 || rgb[1] > 255)
+		|| (rgb[2] < 0 || rgb[2] > 255))
+		return (free(rgb), NULL);
 	return (rgb);
 }
 
@@ -51,6 +71,8 @@ unsigned long	convert_rgb_to_hex(int *rgb_tab)
 	int				g;
 	int				b;
 
+	if (!rgb_tab)
+		return (0);
 	r = rgb_tab[0];
 	g = rgb_tab[1];
 	b = rgb_tab[2];

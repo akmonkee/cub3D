@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/30 14:49:30 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/02 12:58:10 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ typedef struct s_map
 	int			width;
 	int			height;
 	int			lst_itr;
-	int			playr_count;
 	int			content_order;
 }				t_map;
 
