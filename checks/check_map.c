@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:29:39 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/27 14:13:06 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/02 13:27:24 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,24 +90,18 @@ int	check_valid_chars(t_map *map_info)
 	return (1);
 }
 
-void	check_map(t_map *map_info)
+void	check_map(t_data *data, t_map *map_info)
 {
 	mod_lst_it(map_info);
 	get_h_w(map_info);
 	if (map_info->content_order != 2)
-		return ;
+		free_exit(data, 3, NULL);
 	if (!check_surrounded(map_info))
-	{
-		err_msg_std("The map is not surrounded");
-		return ;
-	}
+		free_exit(data, 3, "The map is not surrounded\n");
 	if (!check_valid_chars(map_info))
-		return ;
+		free_exit(data, 3, NULL);
 	if (!has_holes(map_info->content))
-	{
-		err_msg_std("Can not contain empty spaces inside the map");
-		return ;
-	}
+		free_exit(data, 3, "Can not contain empty spaces inside the map\n");
 	map_info->content_order = 3;
 	return ;
 }
