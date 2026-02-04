@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/02 13:24:12 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/04 17:01:54 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ int				has_holes(char **map);
 /*checks.c*/
 int				check_file_type(char *file, char *type);
 int				check_instances(char *line);
-int				check_zero(char **map, char *line, int k);
+int				check_zero(char **map, int k);
 int				check_holes(char **map, char *line, int k);
 
 /*init*/

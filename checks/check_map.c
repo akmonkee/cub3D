@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:29:39 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/02 13:27:24 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/04 17:22:15 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,18 +117,8 @@ int	has_holes(char **map)
 	{
 		if (check_instances(map[i]))
 		{
-			if (!check_zero(map, map[i], i))
-				return (0);
-		}
-		i++;
-	}
-	i = 0;
-	while (i < arr_len)
-	{
-		if (check_instances(map[i]))
-		{
-			if (!check_holes(map, map[i], i))
-				return (0);
+			if (!check_zero(map, i))
+			return (0);
 		}
 		i++;
 	}
