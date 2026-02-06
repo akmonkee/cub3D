@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/06 12:35:31 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/06 14:35:02 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ void	parse_map(t_data *data, char *path)
 	check_map(data, &data->map_info);
 	get_just_map(data, &data->map_info);
 	if (!data->texture.ceiling || !data->texture.floor)
-		free_exit(data, 3, "Error\nInvalid color\n");
+		free_err_file(data, 3, "Invalid color\n", COLOR_MSG);
 }
