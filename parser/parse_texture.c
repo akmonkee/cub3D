@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:56:54 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/06 14:49:37 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/06 15:18:58 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ void	get_text_path(t_data *data, t_map *map, t_texture *texture)
 	while (i < lines)
 	{
 		assign_paths(map->content, i, texture);
-		if (!texture->north || !texture->south || !texture->west || !texture->east)
-			free_err_file(data, 3, NULL, TEXTURE_MSG);
 		i++;
 	}
+	if (!texture->north || !texture->south
+		|| !texture->west || !texture->east)
+		free_err_file(data, 3, NULL, TEXTURE_MSG);
 	map->content_order = 1;
 }
 
