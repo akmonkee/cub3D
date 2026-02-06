@@ -6,31 +6,31 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:29:39 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/04 17:22:15 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/06 13:08:04 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int	check_top_bot(t_map *map_info)
+int	check_top_bot(t_map *map)
 {
 	int	j;
 	int	i;
 
 	j = 0;
-	i = map_info->lst_itr;
-	while (map_info->content[i][j])
+	i = map->lst_itr;
+	while (map->content[i][j])
 	{
-		if (map_info->content[map_info->lst_itr][j] != '1'
-			&& map_info->content[map_info->lst_itr][j] != ' ')
+		if (map->content[map->lst_itr][j] != '1'
+			&& map->content[map->lst_itr][j] != ' ')
 			return (0);
 		j++;
 	}
 	j = 0;
-	while (map_info->content[map_info->lst_itr + map_info->height - 1][j])
+	while (map->content[map->lst_itr + map->height - 1][j])
 	{
-		if (map_info->content[map_info->lst_itr + map_info->height - 1][j] != '1'
-			&& map_info->content[map_info->lst_itr + map_info->height - 1][j] != ' ')
+		if (map->content[map->lst_itr + map->height - 1][j] != '1'
+			&& map->content[map->lst_itr + map->height - 1][j] != ' ')
 			return (0);
 		j++;
 	}
@@ -97,11 +97,11 @@ void	check_map(t_data *data, t_map *map_info)
 	if (map_info->content_order != 2)
 		free_exit(data, 3, NULL);
 	if (!check_surrounded(map_info))
-		free_exit(data, 3, "The map is not surrounded\n");
+		free_err_file(data, 3, "The maps is not surrounded\n", MAP_MSG);
 	if (!check_valid_chars(map_info))
-		free_exit(data, 3, NULL);
+		free_err_file(data, 3, NULL, MAP_MSG);
 	if (!has_holes(map_info->content))
-		free_exit(data, 3, "Can not contain empty spaces inside the map\n");
+		free_err_file(data, 3, "empty spaces inside the map\n", MAP_MSG);
 	map_info->content_order = 3;
 	return ;
 }
@@ -118,7 +118,7 @@ int	has_holes(char **map)
 		if (check_instances(map[i]))
 		{
 			if (!check_zero(map, i))
-			return (0);
+				return (0);
 		}
 		i++;
 	}

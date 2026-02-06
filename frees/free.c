@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:12:45 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/02 12:03:02 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/06 13:09:50 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,12 @@ int	free_n_return(char **str, char *temp, char *msg)
 	if (msg)
 		err_msg_std(msg);
 	return (0);
+}
+
+void	free_err_file(t_data *data, int lvl, char *msg, char *f_p)
+{
+	if (msg)
+		err_msg_std(msg);
+	detailed_err_msg_order(f_p);
+	free_exit(data, lvl, NULL);
 }
