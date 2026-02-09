@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:34:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/01/27 14:12:12 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/09 12:33:03 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,4 @@ void	detailed_err_msg_order(char *path)
 		printf("Error\n Reading %s failed\n", path);
 		return ;
 	}
-}
-
-void	mulitiple_de_msg(char *path1, char *path2)
-{
-	detailed_err_msg_order(path1);
-	detailed_err_msg_order(path2);
 }

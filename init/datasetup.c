@@ -6,20 +6,11 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/09 12:04:40 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/09 12:35:01 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-
-void	clear_img_setup(t_img *img)
-{
-	img->img = NULL;
-	img->addr = NULL;
-	img->pixel_bits = 0;
-	img->size_line = 0;
-	img->endian = 0;
-}
 
 void	map_setup(t_map *map_info)
 {

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/09 12:06:39 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/09 12:34:57 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,12 +148,10 @@ int				has_holes(char **map);
 int				check_file_type(char *file, char *type);
 int				check_instances(char *line);
 int				check_zero(char **map, int k);
-int				check_holes(char **map, char *line, int k);
 
 /*init*/
 
 /*datasetup.c*/
-void			clear_img_setup(t_img *img);
 void			map_setup(t_map *map_info);
 void			ray_set(t_ray *ray);
 void			player_setup(t_player *player);
@@ -248,7 +246,6 @@ int				err_msg_std(char *msg);
 /*detailed_errors.c*/
 int				read_files(char *file);
 void			detailed_err_msg_order(char *path);
-void			mulitiple_de_msg(char *path1, char *path2);
 
 /*movement*/
 
