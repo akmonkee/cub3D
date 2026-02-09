@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:15:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/02 12:58:13 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/09 12:04:40 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	map_setup(t_map *map_info)
 	map_info->width = 0;
 	map_info->lst_itr = 0;
 	map_info->content_order = 0;
+	map_info->player_count = 0;
 }
 
 void	ray_set(t_ray *ray)
