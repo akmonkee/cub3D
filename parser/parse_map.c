@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/06 14:35:02 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/12 12:08:24 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,12 @@ void	map_pop(t_data *data, t_map *map_info, char *path)
 	map_info->content = ft_calloc(sizeof(char *), (lines + 1));
 	map_info->content[lines] = NULL;
 	if (!map_info->content)
-	{
-		free_tab((void **)map_info->content);
-		map_info->content = NULL;
-	}
+		free_exit(data, 2, "Error\nCould not allocate memory\n");
 	if (!read_map_files(map_info, path))
-	{
-		free_tab((void **)map_info->content);
-		map_info->content = NULL;
-	}
+		free_exit(data, 3, "Error\nRead file failed\n");
 	parse_textures(data);
 	if (!set_colors(&data->texture, &data->map_info, lines))
-	{
-		free_tab((void **)map_info->content);
-		map_info->content = NULL;
-	}
+		free_exit(data, 3, NULL);
 }
 
 void	get_just_map(t_data *data, t_map *map_info)
