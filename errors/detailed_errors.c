@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:34:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/09 12:33:03 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/12 12:28:48 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	read_files(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
-		perror("cub3D");
-		exit(1);
-	}
+		return (0);
 	i = 0;
 	line = get_next_line(fd);
 	while (line != NULL)

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/12 12:08:24 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/12 12:26:13 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	read_map_files(t_map *map_info, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
-		perror("cub3D");
-		exit(1);
-	}
+		return (0);
 	i = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -46,6 +43,8 @@ void	map_pop(t_data *data, t_map *map_info, char *path)
 	int	lines;
 
 	lines = count_lines(path);
+	if (lines == 0)
+		free_exit(data, 2, "Error\nFile empty\n");
 	map_info->content = ft_calloc(sizeof(char *), (lines + 1));
 	map_info->content[lines] = NULL;
 	if (!map_info->content)
