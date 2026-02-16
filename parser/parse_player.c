@@ -6,25 +6,22 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:16:14 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/09 12:06:54 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/16 11:54:17 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void	get_player_pos_pl(t_map *map_info, t_player *player, char **map)
+void	player_pos(t_map *map_info, t_player *player, char **map)
 {
 	int		i;
-	size_t	temp_len;
 	size_t	j;
 
 	i = 0;
-	temp_len = 0;
 	while (i < str_arr_len(map))
 	{
 		j = 0;
-		temp_len = ft_strlen(map[i]);
-		while (j < temp_len)
+		while (j < ft_strlen(map[i]))
 		{
 			if (is_present(map[i][j]))
 			{
@@ -45,5 +42,5 @@ void	get_player_pos_pl(t_map *map_info, t_player *player, char **map)
 void	parse_player(t_data *data)
 {
 	player_setup(&data->player);
-	get_player_pos_pl(&data->map_info, &data->player, data->map);
+	player_pos(&data->map_info, &data->player, data->map);
 }
