@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:24:17 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/12 12:26:13 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/16 12:36:43 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	map_pop(t_data *data, t_map *map_info, char *path)
 
 	lines = count_lines(path);
 	if (lines == 0)
-		free_exit(data, 2, "Error\nFile empty\n");
+		free_exit(data, 2, RED"Error\nFile empty\n"RESET);
 	map_info->content = ft_calloc(sizeof(char *), (lines + 1));
 	map_info->content[lines] = NULL;
 	if (!map_info->content)
-		free_exit(data, 2, "Error\nCould not allocate memory\n");
+		free_exit(data, 2, RED"Error\nCould not allocate memory\n"RESET);
 	if (!read_map_files(map_info, path))
-		free_exit(data, 3, "Error\nRead file failed\n");
+		free_exit(data, 3, RED"Error\nRead file failed\n"RESET);
 	parse_textures(data);
 	if (!set_colors(&data->texture, &data->map_info, lines))
 		free_exit(data, 3, NULL);
@@ -70,7 +70,7 @@ void	get_just_map(t_data *data, t_map *map_info)
 		free_exit(data, 3, NULL);
 	data->map = ft_calloc(sizeof(char *), actual_lines + 1);
 	if (!data->map)
-		free_exit(data, 3, "Error\nCould not allocate memory");
+		free_exit(data, 3, RED"Error\nCould not allocate memory"RESET);
 	j = 0;
 	while (i < arr_len && map_info->content[i])
 	{
@@ -90,7 +90,7 @@ void	parse_map(t_data *data, char *path)
 		free_exit(data, 1, "Not a .cub file");
 	if (stat(path, &buffer) != 0)
 	{
-		printf("Error\nFile not found %s\n", path);
+		printf(RED"Error\nFile not found %s\n"RESET, path);
 		free_exit(data, 1, NULL);
 	}
 	map_setup(&data->map_info);

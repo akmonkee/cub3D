@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:29:39 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/06 13:08:04 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/16 12:33:26 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	check_valid_chars(t_map *map_info)
 			c = map_info->content[i][j];
 			if (!check_one(c))
 			{
-				printf("Error\nInvalid char: %c\n", c);
+				printf(RED "Error\nInvalid char: %c\n" RESET, c);
 				return (0);
 			}
 			j++;

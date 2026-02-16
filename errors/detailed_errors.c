@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:34:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/12 12:28:48 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/16 12:33:53 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	detailed_err_msg_order(char *path)
 
 	if (stat(path, &buffer) != 0)
 	{
-		printf("Error\nFile not found %s\n", path);
+		printf(RED "Error\nFile not found %s\n" RESET, path);
 		return ;
 	}
 	if (!read_files(path))
 	{
-		printf("Error\n Reading %s failed\n", path);
+		printf(RED "Error\n Reading %s failed\n" RESET, path);
 		return ;
 	}
 }

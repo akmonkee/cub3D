@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/16 11:53:17 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/16 12:32:02 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # include <stdbool.h>
 # include "libft/libft.h"
 # include "mlx/mlx.h"
+
+# define RED	"\e[31m"
+# define GREEN	"\e[32m"
+# define RESET	"\e[0m"
 
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 960
