@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:34:04 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/16 13:01:37 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/16 13:18:25 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	read_files(char *file)
 	{
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
-		if (line[ft_strlen(line) - 1] == ':')
+		if (ft_strlen(line) != 0 && line[ft_strlen(line) - 1] == ':')
 			printf(GREEN"%s\n"RESET, line);
 		else
 			printf("%s\n", line);
