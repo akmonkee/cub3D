@@ -1,5 +1,3 @@
-ERROR: Invalid map configuration
-
 Map data must appear last in the configuration file and be properly enclosed.
 
 Expected format:

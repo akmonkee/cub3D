@@ -1,5 +1,3 @@
-ERROR: Invalid texture configuration
-
 Texture definitions must appear first in the configuration file.
 
 Expected format:
@@ -32,4 +30,3 @@ Rules:
   • Each texture path must point to a valid .xpm file.
   • No duplicate texture definitions allowed.
   • Textures must be defined before colours and map data.
-  

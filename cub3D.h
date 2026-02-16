@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:25:31 by msisto            #+#    #+#             */
-/*   Updated: 2026/02/16 12:32:02 by msisto           ###   ########.fr       */
+/*   Updated: 2026/02/16 13:08:35 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 # define MOVSPEED 0.015
 
 # define ERR_MSG "Error\nFailed to Populate.check File Paths Or Colour inputs\n"
-# define COLOR_MSG "err_files/color_order.txt"
 # define TEXTURE_MSG "err_files/texture_order.txt"
 # define MAP_MSG "err_files/map_order.txt"
 # define EXPECTED_MSG "err_files/expected_format.txt"
